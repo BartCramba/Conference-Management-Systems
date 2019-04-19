@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <AnchorPane prefHeight="878.0" prefWidth="1168.0" style="-fx-background-color: #20B2AA;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ListenerController">
    <children>
@@ -29,6 +29,26 @@
             <Font name="Leelawadee UI" size="18.0" />
          </font>
       </Text>
-      <TextArea layoutX="47.0" layoutY="339.0" prefHeight="452.0" prefWidth="1073.0" />
+      <TextArea layoutX="47.0" layoutY="339.0" prefHeight="273.0" prefWidth="1073.0" />
+      <Button fx:id="viewSessionButton" layoutX="505.0" layoutY="794.0" mnemonicParsing="false" onAction="#handleViewSessionsButton" text="View Sessions" textFill="LIGHTSEAGREEN">
+         <font>
+            <Font name="Leelawadee UI" size="21.0" />
+         </font>
+      </Button>
+      <Text fill="#d0cccc" layoutX="47.0" layoutY="676.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: #d0cccc;" text="Be part of the International Conference on Machine Learning Conference :" wrappingWidth="774.13671875">
+         <font>
+            <Font name="Leelawadee UI Bold" size="22.0" />
+         </font>
+      </Text>
+      <Button fx:id="joinSpeakerButton" layoutX="857.0" layoutY="651.0" mnemonicParsing="false" onAction="#handleJoinSpeakerButton" prefHeight="31.0" prefWidth="157.0" text="Join us as a Speaker" textFill="LIGHTSEAGREEN">
+         <font>
+            <Font name="Leelawadee UI" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="callForPapersButton" layoutX="857.0" layoutY="698.0" mnemonicParsing="false" onAction="#handleCallForPapersButton" prefHeight="31.0" prefWidth="157.0" text="Call for papers" textFill="LIGHTSEAGREEN">
+         <font>
+            <Font name="Leelawadee UI" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

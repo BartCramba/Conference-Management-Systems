@@ -1,15 +1,11 @@
 package sample.Controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SpeakerController implements Initializable {
-
-    public void handleSubmitProposalButton(ActionEvent actionEvent) {
-    }
+public class PaymentController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
