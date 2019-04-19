@@ -1,7 +1,9 @@
 package sample.Domain;
 
+import javax.persistence.Entity;
 import java.util.Calendar;
 
+@Entity
 public class Conference {
 
     private Integer conferenceId;

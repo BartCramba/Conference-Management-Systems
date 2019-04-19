@@ -1,10 +1,14 @@
 package sample.Domain;
 
+
+import javax.persistence.Entity;
 import java.util.Calendar;
 
+@Entity
 public class Edition {
 
     private Integer sessionId;
+
     private User author;
     private String name;
     private Conference conference;   // the edition belongs to this conference

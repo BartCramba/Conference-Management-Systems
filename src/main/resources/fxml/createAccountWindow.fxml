@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.CreateAccountController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.CreateAccountController">
    <children>
-      <AnchorPane layoutX="-7.0" layoutY="-1.0" prefHeight="420.0" prefWidth="600.0" style="-fx-background-color: #9C2B27;">
+      <AnchorPane layoutX="112.0" prefHeight="420.0" prefWidth="376.0" style="-fx-background-color: #9C2B27;">
          <children>
             <TextField layoutX="53.0" layoutY="116.0" prefHeight="30.0" prefWidth="276.0" promptText="first name" style="-fx-background-color: #9C2B27; -fx-text-fill: #cfceee;">
                <font>
@@ -49,12 +48,11 @@
                   <Font name="Leelawadee UI Semilight" size="24.0" />
                </font>
             </Label>
-            <Button fx:id="nextButton" layoutX="161.0" layoutY="349.0" mnemonicParsing="false" style="-fx-background-color: #E45652;" text="Next" textFill="#cfceee">
+            <Button fx:id="nextButton" layoutX="154.0" layoutY="349.0" mnemonicParsing="false" style="-fx-background-color: #E45652;" text="Create" textFill="#cfceee">
                <font>
                   <Font name="Leelawadee UI Semilight" size="18.0" />
                </font>
             </Button>
-            <ChoiceBox fx:id="choiceBox" layoutX="366.0" layoutY="198.0" prefHeight="25.0" prefWidth="185.0" style="-fx-background-color: #E45652; -fx-text-fill: #cfceee;" />
          </children>
       </AnchorPane>
    </children>

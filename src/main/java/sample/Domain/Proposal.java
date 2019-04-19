@@ -15,9 +15,9 @@ public class Proposal {
     private String name;
     private String description;
 
-    private List<Topic> topics = new ArrayList<>();
-    private List<String> keywords = new ArrayList<>();
-    private List<ProposalStatus> statuses = new ArrayList<>();
+    private List<Topic> topics = new ArrayList<Topic>();
+    private List<String> keywords = new ArrayList<String>();
+    private List<ProposalStatus> statuses = new ArrayList<ProposalStatus>();
 
     private Calendar modified;  // maybe we won't use it
     private Calendar created;
