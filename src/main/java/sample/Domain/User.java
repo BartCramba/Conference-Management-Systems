@@ -1,10 +1,25 @@
 package sample.Domain;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLInsert;
+import org.hibernate.annotations.SQLUpdate;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.*;
+
 /**
  * Working register form
  */
+
+@Entity
+@Table(name="Users")
+@SQLInsert( sql="INSERT INTO Users(userId, firstName, lastName, email, password, userRole) VALUES(?,?,?,?,?,?)")
+@SQLUpdate( sql="UPDATE Users SET firstName = ?, lastName = ?, email = ?, password = ?, userRole = ? WHERE userId = ?")
+@SQLDelete( sql="DELETE Users WHERE userId = ?")
 public class User {
 
+    @Id
     private int userId;
 
     private String firstName;
@@ -12,6 +27,8 @@ public class User {
     private String email;
     private String passsword;
 
+    @Enumerated(EnumType.STRING)
+    @Column
     private UserRole role;
 
     public User(String firstName, String lastName, String email, String passsword, UserRole role) {
