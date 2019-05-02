@@ -1,14 +1,34 @@
-package sample.Domain;
+package sample.domain;
+
+import javax.persistence.*;
 
 /**
  * Fix payment form
  */
+
+@Entity
+@Table(name="Payment")
+//@SQLInsert( sql="INSERT INTO Payment(paymentId, userId, editionId, cardNumber, paymentSum) VALUES(?,?,?,?,?)")
+//@SQLUpdate( sql="UPDATE Payment SET userId = ?, editionId = ?, cardNumber = ?, paymentSum = ? WHERE paymentId = ?")
+//@SQLDelete( sql="DELETE Payment WHERE paymentId = ?")
 public class Payment {
 
+    @Id
+    @GeneratedValue
     private Integer paymentId;
+
+    @ManyToOne
+    @JoinColumn(name="userId")
+    @Column(name="userId")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name="editionId")
     private Edition edition;
+
     private String cardNumber;
+
+    @Column(name="paymentSum")
     private float sum;
 
     public Payment(User user, Edition edition, String cardNumber, float sum) {

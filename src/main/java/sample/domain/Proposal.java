@@ -1,5 +1,6 @@
-package sample.Domain;
+package sample.domain;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -7,19 +8,49 @@ import java.util.List;
 /**
  * Creates window with the proposals which need review
  */
+
+@Entity
+@Table(name="Proposal")
+//@SQLInsert( sql="INSERT INTO Proposal(proposalId, userId, editionId, proposalName, proposalDescription, keywords, statuses) VALUES(?,?,?,?,?,?,?)")
+//@SQLUpdate( sql="UPDATE Proposal SET userId = ?, editionId = ?, proposalName = ?, proposalDescription = ?, keywords = ?, statuses = ? WHERE proposalId = ?")
+//@SQLDelete( sql="DELETE Proposal WHERE proposalId = ?")
 public class Proposal {
 
+    @Id
+    @GeneratedValue
     private int proposalId;
+
+    @ManyToOne
+    @JoinColumn(name="userId")
+    @Column(name="userId")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name="editionId")
     private Edition edition;
+
+    @Column(name="proposalName")
     private String name;
+
+    @Column(name="proposalDescription")
     private String description;
 
+    @OneToMany
+    @JoinTable(name="Topics",
+    joinColumns=@JoinColumn(name="proposalId"),
+    inverseJoinColumns=@JoinColumn(name="topicId"))
     private List<Topic> topics = new ArrayList<Topic>();
+
+    @ElementCollection(targetClass=String.class)
     private List<String> keywords = new ArrayList<String>();
+
+    @OneToMany
+    @JoinColumn(name="proposalStatusId")
     private List<ProposalStatus> statuses = new ArrayList<ProposalStatus>();
 
+    @Temporal(TemporalType.DATE)
     private Calendar modified;  // maybe we won't use it
+    @Temporal(TemporalType.DATE)
     private Calendar created;
 
     public Proposal(User user, Edition edition, String name, String description, List<Topic> topics, List<String> keywords,

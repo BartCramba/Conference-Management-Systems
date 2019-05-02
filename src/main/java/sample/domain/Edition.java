@@ -1,32 +1,52 @@
-package sample.Domain;
+package sample.domain;
 
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Calendar;
 
 @Entity
+@Table(name="Edition")
+//@SQLInsert( sql="INSERT INTO Edition(editionId, author, editionName, conferenceId, beginDate, endDate, beginSubmissions, endSubmissions, endBidding, endReview, created) VALUES(?,?,?,?,?,?,?,?,?,?,?)")
+//@SQLUpdate( sql="UPDATE Edition SET author = ?, editionName = ?, conferenceId = ?, beginDate = ?, endDate = ?, beginSubmissions = ?, endSubmissions = ?, endBidding = ?, endReview = ?, created = ? WHERE editionId = ?")
+//@SQLDelete( sql="DELETE Edition WHERE editionId = ?")
 public class Edition {
 
-    private Integer sessionId;
+    @Id
+    @GeneratedValue
+    private Integer editionId;
 
+    @ManyToOne
+    @JoinColumn(name="userId")
     private User author;
+
+    @Column(name="editionName")
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name="conferenceId")
     private Conference conference;   // the edition belongs to this conference
 
+    @Temporal(TemporalType.DATE)
     private Calendar beginDate;
+    @Temporal(TemporalType.DATE)
     private Calendar endDate;
 
+    @Temporal(TemporalType.DATE)
     private Calendar beginSubmissions;
+    @Temporal(TemporalType.DATE)
     private Calendar endSubmissions;
 
+    @Temporal(TemporalType.DATE)
     private Calendar endBidding;
+    @Temporal(TemporalType.DATE)
     private Calendar endReview;
 
+    @Temporal(TemporalType.DATE)
     private Calendar created;
 
-    public Edition(Integer sessionId, User author, String name, Conference conference, Calendar beginDate, Calendar endDate, Calendar beginSubmissions,
+    public Edition(Integer editionId, User author, String name, Conference conference, Calendar beginDate, Calendar endDate, Calendar beginSubmissions,
                    Calendar endSubmissions, Calendar endBidding, Calendar endReview, Calendar created) {
-        this.sessionId = sessionId;
+        this.editionId = editionId;
         this.author = author;
         this.name = name;
         this.conference = conference;
@@ -39,12 +59,12 @@ public class Edition {
         this.created = created;
     }
 
-    public Integer getSessionId() {
-        return sessionId;
+    public Integer getEditionId() {
+        return editionId;
     }
 
-    public void setSessionId(Integer sessionId) {
-        this.sessionId = sessionId;
+    public void setEditionId(Integer editionId) {
+        this.editionId = editionId;
     }
 
     public User getAuthor() {
@@ -130,7 +150,7 @@ public class Edition {
     @Override
     public String toString() {
         return "Edition{" +
-                "sessionId=" + sessionId +
+                "editionId=" + editionId +
                 ", author=" + author +
                 ", name='" + name + '\'' +
                 ", conference=" + conference +

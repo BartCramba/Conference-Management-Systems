@@ -1,14 +1,22 @@
-package sample.Domain;
+package sample.domain;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Calendar;
 
 @Entity
+@Table(name="Conference")
+//@SQLInsert( sql="INSERT INTO Conference(conferenceId, author, conferenceName, created) VALUES(?,?,?,?)")
+//@SQLUpdate( sql="UPDATE Conference SET author = ?, conferenceName = ?, created = ? WHERE conferenceId = ?")
+//@SQLDelete( sql="DELETE Conference WHERE conferenceId = ?")
 public class Conference {
 
+    @Id
+    @GeneratedValue
     private Integer conferenceId;
     private User author;
+    @Column(name="conferenceName")
     private String name;
+    @Temporal(TemporalType.DATE)
     private Calendar created;
 
     public Conference(User author, String name) {

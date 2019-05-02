@@ -1,4 +1,4 @@
-package sample.Controller;
+package sample.controller;
 
 import javafx.fxml.Initializable;
 

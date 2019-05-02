@@ -1,14 +1,31 @@
-package sample.Domain;
+package sample.domain;
 
+import javax.persistence.*;
 import java.util.Calendar;
 
+@Entity
+@Table(name="Schedule")
+//@SQLInsert( sql="INSERT INTO Schedule(scheduleId, proposalId, sessionId, beginDate, endDate) VALUES(?,?,?,?,?)")
+//@SQLUpdate( sql="UPDATE Schedule SET proposalId = ?, sessionId = ?, beginDate = ?, endDate = ? WHERE scheduleId = ?")
+//@SQLDelete( sql="DELETE Schedule WHERE scheduleId = ?")
 public class Schedule {
 
+    @Id
+    @GeneratedValue
     private Integer scheduleId;
+
+    @ManyToOne
+    @JoinColumn(name="proposalId")
     private Proposal proposal;
+
+    @ManyToOne
+    @JoinColumn(name="sessionId")
+    @Column(name="sessionId")
     private Session session;
 
+    @Temporal(TemporalType.DATE)
     private Calendar beginDate;
+    @Temporal(TemporalType.DATE)
     private Calendar endDate;
 
     public Schedule(Proposal proposal, Session session, Calendar beginDate, Calendar endDate) {

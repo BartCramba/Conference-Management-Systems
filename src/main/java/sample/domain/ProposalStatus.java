@@ -1,19 +1,39 @@
-package sample.Domain;
+package sample.domain;
 
+import javax.persistence.*;
 import java.util.Calendar;
 
 /**
  * Choosing reviewers and see comments
  */
+@Entity
+@Table(name="ProposalStatus")
+//@SQLInsert( sql="INSERT INTO ProposalStatus(proposalStatusId, proposalStatus, comment, userId, proposalId, modified, created) VALUES(?,?,?,?,?,?,?)")
+//@SQLUpdate( sql="UPDATE ProposalStatus SET proposalStatus = ?, comment = ?, userId = ?, proposalId = ?, modified = ?, created = ? WHERE proposalStatusId = ?")
+//@SQLDelete( sql="DELETE ProposalStatus WHERE proposalStatusId = ?")
 public class ProposalStatus {
 
+    @Id
+    @GeneratedValue
     private int proposalStatusId;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="proposalStatus")
     private proposalStatus status;
     private String comment;
+
+    @ManyToOne
+    @JoinColumn(name="userId")
+    @Column(name="userId")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name="proposalId")
     private Proposal proposal;
 
+    @Temporal(TemporalType.DATE)
     private Calendar modified;
+    @Temporal(TemporalType.DATE)
     private Calendar created;
 
     public int getProposalStatusId() {

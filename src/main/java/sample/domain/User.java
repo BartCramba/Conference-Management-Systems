@@ -1,4 +1,4 @@
-package sample.Domain;
+package sample.domain;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLInsert;
@@ -14,21 +14,23 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Users")
-@SQLInsert( sql="INSERT INTO Users(userId, firstName, lastName, email, password, userRole) VALUES(?,?,?,?,?,?)")
-@SQLUpdate( sql="UPDATE Users SET firstName = ?, lastName = ?, email = ?, password = ?, userRole = ? WHERE userId = ?")
-@SQLDelete( sql="DELETE Users WHERE userId = ?")
+//@SQLInsert( sql="INSERT INTO Users(userId, firstName, lastName, email, password, userRole) VALUES(?,?,?,?,?,?)")
+//@SQLUpdate( sql="UPDATE Users SET firstName = ?, lastName = ?, email = ?, password = ?, userRole = ? WHERE userId = ?")
+//@SQLDelete( sql="DELETE Users WHERE userId = ?")
 public class User {
 
     @Id
+    @GeneratedValue
     private int userId;
 
     private String firstName;
     private String lastName;
     private String email;
+    @Column(name="password")
     private String passsword;
 
     @Enumerated(EnumType.STRING)
-    @Column
+    @Column(name="userRole")
     private UserRole role;
 
     public User(String firstName, String lastName, String email, String passsword, UserRole role) {
