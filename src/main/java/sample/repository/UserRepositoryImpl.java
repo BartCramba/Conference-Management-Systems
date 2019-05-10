@@ -2,16 +2,20 @@ package sample.repository;
 import sample.domain.User;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class UserRepositoryImpl implements BaseRepository<User> {
 
+    @PersistenceContext
     private EntityManager em;
 
     public UserRepositoryImpl(EntityManager em) {
         this.em = em;
     }
+
+    public UserRepositoryImpl() {}
 
     @Override
     public User findById(int id) {

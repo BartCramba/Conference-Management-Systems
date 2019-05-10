@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="457.0" prefWidth="300.0" style="-fx-background-color: #9C2B27;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.PaymentController">
+   <children>
+      <Label layoutX="133.0" layoutY="35.0" prefHeight="32.0" prefWidth="337.0" text="Payment Details" textFill="#d0cccc">
+         <font>
+            <Font name="Leelawadee UI Semilight" size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="67.0" layoutY="115.0" text="Email" textFill="#d0cccc">
+         <font>
+            <Font name="Leelawadee UI Semilight" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="178.0" text="Edition" textFill="#d0cccc">
+         <font>
+            <Font name="Leelawadee UI Semilight" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="26.0" layoutY="248.0" text="Card Number" textFill="#d0cccc">
+         <font>
+            <Font name="Leelawadee UI Semilight" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="72.0" layoutY="312.0" text="Sum" textFill="#d0cccc">
+         <font>
+            <Font name="Leelawadee UI Semilight" size="23.0" />
+         </font>
+      </Label>
+      <TextField layoutX="227.0" layoutY="120.0" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #E45652;" />
+      <TextField layoutX="227.0" layoutY="187.0" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #E45652;" />
+      <TextField layoutX="227.0" layoutY="253.0" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #E45652;" />
+      <TextField layoutX="227.0" layoutY="317.0" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #E45652;" />
+      <Button fx:id="submitButton" layoutX="182.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #E45652;" text="SUBMIT" textFill="#d0cccc">
+         <font>
+            <Font name="Leelawadee UI Semilight" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
