@@ -44,6 +44,9 @@ public class Edition {
     @Temporal(TemporalType.DATE)
     private Calendar created;
 
+    public Edition() {
+    }
+
     public Edition(Integer editionId, User author, String name, Conference conference, Calendar beginDate, Calendar endDate, Calendar beginSubmissions,
                    Calendar endSubmissions, Calendar endBidding, Calendar endReview, Calendar created) {
         this.editionId = editionId;

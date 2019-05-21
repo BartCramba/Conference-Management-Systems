@@ -24,7 +24,6 @@ public class ProposalStatus {
 
     @ManyToOne
     @JoinColumn(name="userId")
-    @Column(name="userId")
     private User user;
 
     @ManyToOne
@@ -35,6 +34,9 @@ public class ProposalStatus {
     private Calendar modified;
     @Temporal(TemporalType.DATE)
     private Calendar created;
+
+    public ProposalStatus() {
+    }
 
     public int getProposalStatusId() {
         return proposalStatusId;

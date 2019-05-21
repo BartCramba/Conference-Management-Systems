@@ -22,7 +22,6 @@ public class Proposal {
 
     @ManyToOne
     @JoinColumn(name="userId")
-    @Column(name="userId")
     private User user;
 
     @ManyToOne
@@ -52,6 +51,9 @@ public class Proposal {
     private Calendar modified;  // maybe we won't use it
     @Temporal(TemporalType.DATE)
     private Calendar created;
+
+    public Proposal() {
+    }
 
     public Proposal(User user, Edition edition, String name, String description, List<Topic> topics, List<String> keywords,
                     List<ProposalStatus> statuses, Calendar modified, Calendar created) {

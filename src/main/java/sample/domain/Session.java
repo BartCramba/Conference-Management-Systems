@@ -7,7 +7,7 @@ import org.hibernate.annotations.SQLUpdate;
 import javax.persistence.*;
 
 @Entity
-@Table(name="_Session")
+@Table(name="Session")
 //@SQLInsert( sql="INSERT INTO _Session(sessionId, sessionName, room, userId, editionId) VALUES(?,?,?,?,?)")
 //@SQLUpdate( sql="UPDATE _Session SET sessionName = ?, room = ?, userId = ?, editionId = ? WHERE sessionId = ?")
 //@SQLDelete( sql="DELETE _Session WHERE sessionId = ?")
@@ -22,7 +22,6 @@ public class Session {
 
     @ManyToOne
     @JoinColumn(name="userId")
-    @Column(name="userId")
     private User user;
 
     @ManyToOne
@@ -34,6 +33,9 @@ public class Session {
         this.room = room;
         this.user = user;
         this.edition = edition;
+    }
+
+    public Session() {
     }
 
     public Integer getSessionId() {

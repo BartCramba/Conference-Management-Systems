@@ -20,13 +20,15 @@ public class Schedule {
 
     @ManyToOne
     @JoinColumn(name="sessionId")
-    @Column(name="sessionId")
     private Session session;
 
     @Temporal(TemporalType.DATE)
     private Calendar beginDate;
     @Temporal(TemporalType.DATE)
     private Calendar endDate;
+
+    public Schedule() {
+    }
 
     public Schedule(Proposal proposal, Session session, Calendar beginDate, Calendar endDate) {
         this.proposal = proposal;

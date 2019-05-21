@@ -19,7 +19,6 @@ public class Payment {
 
     @ManyToOne
     @JoinColumn(name="userId")
-    @Column(name="userId")
     private User user;
 
     @ManyToOne
@@ -30,6 +29,9 @@ public class Payment {
 
     @Column(name="paymentSum")
     private float sum;
+
+    public Payment() {
+    }
 
     public Payment(User user, Edition edition, String cardNumber, float sum) {
         this.user = user;

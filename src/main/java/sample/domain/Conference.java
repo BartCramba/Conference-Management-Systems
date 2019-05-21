@@ -13,6 +13,8 @@ public class Conference {
     @Id
     @GeneratedValue
     private Integer conferenceId;
+    @ManyToOne
+    @JoinColumn(name = "userId")
     private User author;
     @Column(name="conferenceName")
     private String name;
