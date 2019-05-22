@@ -3,12 +3,14 @@ import sample.domain.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+
 public class UserRepositoryImpl implements BaseRepository<User> {
 
-    @PersistenceContext
+    @PersistenceUnit
     private EntityManager em;
 
     public UserRepositoryImpl(EntityManager em) {
@@ -30,10 +32,24 @@ public class UserRepositoryImpl implements BaseRepository<User> {
 
     @Override
     public User save(User object) {
-        if ((Integer) object.getId() == null) {
-            em.persist(object);
-        } else {
-            object = em.merge(object);
+        //System.out.println(object.getId());
+//        if ((Integer) object.getId() == 0) {
+//            System.out.println("bdsb");
+//            em.persist(object);
+//
+//        } else {
+//            object = em.merge(object);
+//        }
+        try
+        {em.getTransaction().begin();
+         em.persist(object);
+        em.getTransaction().commit();
+        }
+        finally {
+            {
+                if(em.getTransaction().isActive())
+                em.getTransaction().rollback();
+            }
         }
         return object;
     }
