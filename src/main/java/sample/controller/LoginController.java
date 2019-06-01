@@ -45,8 +45,8 @@ public class LoginController implements Initializable {
         String fxmlFile = null;
 
         User resultUser = repo.getByUsername(email.getText(),password.getText());
-
-        if (resultUser == null)
+        //System.out.println(resultUser.getRole().toString());
+        if (resultUser.getFirstName() == null)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Invalid user.");
