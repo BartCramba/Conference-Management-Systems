@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.*;
+import sample.controller.CreateAccountController;
 import sample.domain.User;
 import sample.repository.UserRepositoryImpl;
 
@@ -32,18 +33,5 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("sample");
-        EntityManager em = emf.createEntityManager();
-        UserRepositoryImpl repo = new UserRepositoryImpl(em);
-        User u = new User("firstName", "lastName", "email", "12345678", User.UserRole.chair);
-
-        System.out.println(repo.save(u));
-        System.out.println(u.getId());
-        User i = new User("firstName", "lastName", "email", "12345678", User.UserRole.chair);
-        System.out.println(repo.save(i));
-        System.out.println(i.getId());
-        System.out.println("asads");
-
-
         launch(args); }
 }

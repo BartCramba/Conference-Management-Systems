@@ -14,6 +14,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
+import javafx.stage.WindowEvent;
 
 public class LoginController implements Initializable {
 
@@ -78,6 +79,11 @@ public class LoginController implements Initializable {
             stage.setScene(new Scene(root1));
             stage.show();
 
+
+            stage = (Stage) loginButton.getScene().getWindow();
+            stage.close();
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -92,4 +98,5 @@ public class LoginController implements Initializable {
                 "Listener"
         );
     }
+
 }
