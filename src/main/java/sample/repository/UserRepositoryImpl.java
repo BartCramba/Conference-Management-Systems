@@ -7,6 +7,7 @@ import javax.persistence.PersistenceUnit;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+
 public class UserRepositoryImpl implements BaseRepository<User> {
 
     @PersistenceUnit(unitName = "sample")
@@ -31,12 +32,6 @@ public class UserRepositoryImpl implements BaseRepository<User> {
 
     @Override
     public User save(User object) {
-        //if ((Integer) object.getId() == 0) {
-            //em.persist(object);
-        //} else {
-
-            //object = em.merge(object);
-        //}
         try{
             em.getTransaction().begin();
             em.persist(object);
