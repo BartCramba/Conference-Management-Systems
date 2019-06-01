@@ -14,9 +14,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Users")
-@SQLInsert( sql="INSERT INTO Users(userId, firstName, lastName, email, password, userRole) VALUES(?,?,?,?,?,?)")
-@SQLUpdate( sql="UPDATE Users SET firstName = ?, lastName = ?, email = ?, password = ?, userRole = ? WHERE userId = ?")
-@SQLDelete( sql="DELETE Users WHERE userId = ?")
+//@SQLInsert( sql="INSERT INTO Users(userId, firstName, lastName, email, password, userRole) VALUES(?,?,?,?,?,?)")
+//@SQLUpdate( sql="UPDATE Users SET firstName = ?, lastName = ?, email = ?, password = ?, userRole = ? WHERE userId = ?")
+//@SQLDelete( sql="DELETE Users WHERE userId = ?")
 public class User {
 
     @Id

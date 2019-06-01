@@ -36,7 +36,12 @@ public class Main extends Application {
         EntityManager em = emf.createEntityManager();
         UserRepositoryImpl repo = new UserRepositoryImpl(em);
         User u = new User("firstName", "lastName", "email", "12345678", User.UserRole.chair);
+
         System.out.println(repo.save(u));
+        System.out.println(u.getId());
+        User i = new User("firstName", "lastName", "email", "12345678", User.UserRole.chair);
+        System.out.println(repo.save(i));
+        System.out.println(i.getId());
         System.out.println("asads");
 
 
