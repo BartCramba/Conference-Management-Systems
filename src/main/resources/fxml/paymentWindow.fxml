@@ -29,11 +29,7 @@
             <Font name="Leelawadee UI Semilight" size="23.0" />
          </font>
       </Label>
-      <Label layoutX="72.0" layoutY="312.0" text="Sum" textFill="#d0cccc">
-         <font>
-            <Font name="Leelawadee UI Semilight" size="23.0" />
-         </font>
-      </Label>
+
       <TextField layoutX="227.0" layoutY="120.0" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #E45652;" />
       <TextField layoutX="227.0" layoutY="187.0" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #E45652;" />
       <TextField layoutX="227.0" layoutY="253.0" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #E45652;" />

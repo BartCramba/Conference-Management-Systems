@@ -106,6 +106,9 @@ public class User {
     public static enum UserRole {
         chair("ROLE_CHAIR"),
         coChair("ROLE_CO_CHAIR"),
+        listener("ROLE_LISTENER"),
+        author("ROLE_AUTHOR"),
+        speaker("ROLE_SPEAKER"),
         user("ROLE_USER"),
         superAdmin("ROLE_SUPER_ADMIN");
 
