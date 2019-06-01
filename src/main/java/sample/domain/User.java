@@ -14,11 +14,18 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Users")
+@NamedQuery(
+        name="User.findByUsername",
+        query="SELECT u FROM User u WHERE u.email = :email and u.passsword = :password"
+)
 //@SQLInsert( sql="INSERT INTO Users(userId, firstName, lastName, email, password, userRole) VALUES(?,?,?,?,?,?)")
 //@SQLUpdate( sql="UPDATE Users SET firstName = ?, lastName = ?, email = ?, password = ?, userRole = ? WHERE userId = ?")
 //@SQLDelete( sql="DELETE Users WHERE userId = ?")
 public class User {
 
+    public static final String USER_LOGIN = "User.findByUsername";
+    public static final String EMAIL = "email";
+    public static final String PASSWORD = "password";
     @Id
     @GeneratedValue
     private int userId;
@@ -107,7 +114,10 @@ public class User {
         chair("ROLE_CHAIR"),
         coChair("ROLE_CO_CHAIR"),
         user("ROLE_USER"),
-        superAdmin("ROLE_SUPER_ADMIN");
+        superAdmin("ROLE_SUPER_ADMIN"),
+        listener("ROLE_LISTENER"),
+        author("ROLE_AUTHOR"),
+        speaker("ROLE_SPEAKER");
 
         /**
          * Name of the role
