@@ -13,7 +13,9 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.stage.WindowEvent;
+import sample.domain.Payment;
 import sample.domain.User;
+import sample.repository.PaymentRepositoryImpl;
 import sample.repository.UserRepositoryImpl;
 
 import javax.persistence.EntityManager;
@@ -24,9 +26,12 @@ public class LoginController implements Initializable {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("sample");
     EntityManager em = emf.createEntityManager();
     UserRepositoryImpl repo= new UserRepositoryImpl(em);
+    PaymentRepositoryImpl repo2= new PaymentRepositoryImpl(em);
 
     @FXML
     private TextField email;
+    @FXML
+    private TextField Email;
     @FXML
     private PasswordField password;
 
@@ -42,8 +47,6 @@ public class LoginController implements Initializable {
     @FXML
     void handleLoginButton(ActionEvent event) {
 
-        String fxmlFile = null;
-
         User resultUser = repo.getByUsername(email.getText(),password.getText());
         //System.out.println(resultUser.getRole().toString());
         if (resultUser.getFirstName() == null)
@@ -55,10 +58,12 @@ public class LoginController implements Initializable {
         }
         else
         {
+            String fxmlFile = null;
             switch (choiceBox.getValue()) {
                 case "Session Chair":
                     if(resultUser.getRole().toString().equals("ROLE_CHAIR")){
                         fxmlFile = "/fxml/sessionChairWindow.fxml";
+                        this.pay(fxmlFile);
                     }
                     else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -70,6 +75,7 @@ public class LoginController implements Initializable {
                 case "Author":
                     if(resultUser.getRole().toString().equals("ROLE_AUTHOR")){
                         fxmlFile = "/fxml/authorWindow.fxml";
+                        this.pay(fxmlFile);
                     }
                     else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -82,6 +88,7 @@ public class LoginController implements Initializable {
                 case "Listener":
                     if(resultUser.getRole().toString().equals("ROLE_LISTENER")){
                         fxmlFile = "/fxml/listenerWindow.fxml";
+                        this.pay(fxmlFile);
                     }
                     else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -91,6 +98,29 @@ public class LoginController implements Initializable {
                     }
                     break;
             }
+            //------------
+
+        }
+    }
+
+    public void pay(String fxmlFile){
+        Payment resultPayment = repo2.getByUsername(email.getText());
+        if (resultPayment.getEmail()==null){
+            System.out.println("Nu e null");
+            try{
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/paymentWindow.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                Stage stage = new Stage();
+
+                stage.setScene(new Scene(root1));
+                stage.show();
+
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else{
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
                 Parent root1 = (Parent) fxmlLoader.load();
@@ -104,6 +134,7 @@ public class LoginController implements Initializable {
             }
         }
     }
+
 
     @FXML
     void handleCreateAccountButton(ActionEvent event) {

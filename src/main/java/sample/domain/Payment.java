@@ -8,36 +8,41 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Payment")
-//@SQLInsert( sql="INSERT INTO Payment(paymentId, userId, editionId, cardNumber, paymentSum) VALUES(?,?,?,?,?)")
-//@SQLUpdate( sql="UPDATE Payment SET userId = ?, editionId = ?, cardNumber = ?, paymentSum = ? WHERE paymentId = ?")
+//@SQLInsert( sql="INSERT INTO Payment(paymentId, userId, editionId, cardNumber) VALUES(?,?,?,?)")
+//@SQLUpdate( sql="UPDATE Payment SET userId = ?, editionId = ?, cardNumber = ? WHERE paymentId = ?")
 //@SQLDelete( sql="DELETE Payment WHERE paymentId = ?")
+@NamedQuery(
+        name="Payment.findByUsername",
+        query="SELECT u FROM Payment u WHERE u.email = :email"
+)
 public class Payment {
+    public static final String PAYMENT = "Payment.findByUsername";
+    public static final String EMAIL = "email";
 
     @Id
     @GeneratedValue
     private Integer paymentId;
 
-    @ManyToOne
-    @JoinColumn(name="userId")
-    private User user;
+    //@ManyToOne
+    @JoinColumn(name="email")
+    private String email;
 
-    @ManyToOne
-    @JoinColumn(name="editionId")
-    private Edition edition;
+    //@ManyToOne
+    //@JoinColumn(name="editionId")
+    //private Edition edition;
 
+
+    @Column(name="cardNumber")
     private String cardNumber;
 
-    @Column(name="paymentSum")
-    private float sum;
 
     public Payment() {
     }
 
-    public Payment(User user, Edition edition, String cardNumber, float sum) {
-        this.user = user;
-        this.edition = edition;
+    public Payment(User user, String cardNumber) {
+        this.email = user.getEmail();
+        //this.edition = edition;
         this.cardNumber = cardNumber;
-        this.sum = sum;
     }
 
     public Integer getPaymentId() {
@@ -48,21 +53,15 @@ public class Payment {
         this.paymentId = paymentId;
     }
 
-    public User getUser() {
-        return user;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Edition getEdition() {
-        return edition;
-    }
 
-    public void setEdition(Edition edition) {
-        this.edition = edition;
-    }
 
     public String getCardNumber() {
         return cardNumber;
@@ -72,22 +71,13 @@ public class Payment {
         this.cardNumber = cardNumber;
     }
 
-    public float getSum() {
-        return sum;
-    }
-
-    public void setSum(float sum) {
-        this.sum = sum;
-    }
 
     @Override
     public String toString() {
         return "Payment{" +
                 "paymentId=" + paymentId +
-                ", user=" + user +
-                ", edition=" + edition +
+                ", email=" + email +
                 ", cardNumber='" + cardNumber + '\'' +
-                ", sum=" + sum +
                 '}';
     }
 
