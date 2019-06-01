@@ -1,10 +1,9 @@
 package sample.repository;
 import sample.domain.User;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceUnit;
-import javax.persistence.TypedQuery;
+import javax.jws.soap.SOAPBinding;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -51,5 +50,16 @@ public class UserRepositoryImpl implements BaseRepository<User> {
         } else {
             em.merge(object);
         }
+    }
+
+    public User getByUsername(String email, String password){
+        List<User> result = em.createNamedQuery(User.USER_LOGIN, User.class)
+                .setParameter(User.EMAIL, email)
+                .setParameter(User.PASSWORD,password)
+                .getResultList();
+        if(result.isEmpty()){
+            return new User();
+        }
+        return result.get(0);
     }
 }
