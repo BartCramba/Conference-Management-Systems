@@ -13,5 +13,9 @@
     <data-source name="hibernate.cfg.xml/Hibernate" uuid="51f41d6b-35e1-4b55-a2be-5fcfa62afa19">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
     </data-source>
+    <data-source name="hibernate.cfg.xml/Hibernate" uuid="2d97941d-98c0-485a-8426-ab81f9d20e2f">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
+      <user-name>cbie2280</user-name>
+    </data-source>
   </component>
 </project>
