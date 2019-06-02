@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -48,7 +49,6 @@ public class LoginController implements Initializable {
     void handleLoginButton(ActionEvent event) {
 
         User resultUser = repo.getByUsername(email.getText(),password.getText());
-        //System.out.println(resultUser.getRole().toString());
         if (resultUser.getFirstName() == null)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -59,54 +59,60 @@ public class LoginController implements Initializable {
         else
         {
             String fxmlFile = null;
-            switch (choiceBox.getValue()) {
-                case "Session Chair":
-                    if(resultUser.getRole().toString().equals("ROLE_CHAIR")){
-                        fxmlFile = "/fxml/sessionChairWindow.fxml";
-                        this.pay(fxmlFile);
-                    }
-                    else {
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setHeaderText("Invalid role.");
-                        alert.setContentText("Please choose a corresponding role.");
-                        alert.show();
-                    }
-                    break;
-                case "Author":
-                    if(resultUser.getRole().toString().equals("ROLE_AUTHOR")){
-                        fxmlFile = "/fxml/authorWindow.fxml";
-                        this.pay(fxmlFile);
-                    }
-                    else {
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setHeaderText("Invalid role.");
-                        alert.setContentText("Please choose a corresponding role.");
-                        alert.show();
-                    }
+            try{
+                switch (choiceBox.getValue()) {
+                    case "Session Chair":
+                        if(resultUser.getRole().toString().equals("ROLE_CHAIR")){
+                            fxmlFile = "/fxml/sessionChairWindow.fxml";
+                            this.pay(fxmlFile);
+                        }
+                        else {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setHeaderText("Invalid role.");
+                            alert.setContentText("Please choose a corresponding role.");
+                            alert.show();
+                        }
+                        break;
+                    case "Author":
+                        if(resultUser.getRole().toString().equals("ROLE_AUTHOR")){
+                            fxmlFile = "/fxml/authorWindow.fxml";
+                            this.pay(fxmlFile);
+                        }
+                        else {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setHeaderText("Invalid role.");
+                            alert.setContentText("Please choose a corresponding role.");
+                            alert.show();
+                        }
 
-                    break;
-                case "Listener":
-                    if(resultUser.getRole().toString().equals("ROLE_LISTENER")){
-                        fxmlFile = "/fxml/listenerWindow.fxml";
-                        this.pay(fxmlFile);
-                    }
-                    else {
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setHeaderText("Invalid role.");
-                        alert.setContentText("Please choose a corresponding role.");
-                        alert.show();
-                    }
-                    break;
+                        break;
+                    case "Listener":
+                        if(resultUser.getRole().toString().equals("ROLE_LISTENER")){
+                            fxmlFile = "/fxml/listenerWindow.fxml";
+                            this.pay(fxmlFile);
+                        }
+                        else {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setHeaderText("Invalid role.");
+                            alert.setContentText("Please choose a corresponding role.");
+                            alert.show();
+                        }
+                        break;
+                }
+
             }
-            //------------
-
+            catch (NullPointerException e){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Nothing selected");
+                alert.setContentText("A choice from dropdown must be selected.");
+                alert.show();
+            }
         }
     }
 
     public void pay(String fxmlFile){
         Payment resultPayment = repo2.getByUsername(email.getText());
         if (resultPayment.getEmail()==null){
-            System.out.println("Nu e null");
             try{
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/paymentWindow.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
