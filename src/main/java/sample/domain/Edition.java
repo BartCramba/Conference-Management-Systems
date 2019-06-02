@@ -2,7 +2,9 @@ package sample.domain;
 
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 @Table(name="Edition")
@@ -10,14 +12,15 @@ import java.util.Calendar;
 //@SQLUpdate( sql="UPDATE Edition SET author = ?, editionName = ?, conferenceId = ?, beginDate = ?, endDate = ?, beginSubmissions = ?, endSubmissions = ?, endBidding = ?, endReview = ?, created = ? WHERE editionId = ?")
 //@SQLDelete( sql="DELETE Edition WHERE editionId = ?")
 public class Edition {
-
+    public static final String EDITION = "EDITION.findByUsername";
+    public static final String EMAIL = "email";
     @Id
     @GeneratedValue
     private Integer editionId;
 
-//    @ManyToOne
-//    @JoinColumn(name="userId")
-//    private User author;
+    //@ManyToOne
+    @Column(name="userId")
+    private int author;
 
     @Column(name="editionName")
     private String name;
@@ -26,23 +29,23 @@ public class Edition {
 //    @JoinColumn(name="conferenceId")
 //    private Conference conference;   // the edition belongs to this conference
     @Column(name="beginDate")
-    @Temporal(TemporalType.DATE)
-    private Calendar beginDate;
+   // @Temporal(TemporalType.DATE)
+    private LocalDate beginDate;
     @Column(name="endDate")
-    @Temporal(TemporalType.DATE)
-    private Calendar endDate;
+    //@Temporal(TemporalType.DATE)
+    private LocalDate endDate;
     @Column(name="beginSubmissions")
-    @Temporal(TemporalType.DATE)
-    private Calendar beginSubmissions;
+   // @Temporal(TemporalType.DATE)
+    private LocalDate beginSubmissions;
     @Column(name="endSubmissions")
-    @Temporal(TemporalType.DATE)
-    private Calendar endSubmissions;
+    //@Temporal(TemporalType.DATE)
+    private LocalDate endSubmissions;
     @Column(name="endBidding")
-    @Temporal(TemporalType.DATE)
-    private Calendar endBidding;
+   // @Temporal(TemporalType.DATE)
+    private LocalDate endBidding;
     @Column(name="endReview")
-    @Temporal(TemporalType.DATE)
-    private Calendar endReview;
+    //@Temporal(TemporalType.DATE)
+    private LocalDate endReview;
 //    @Column(name="editionName")
 //    @Temporal(TemporalType.DATE)
 //    private Calendar created;
@@ -50,10 +53,10 @@ public class Edition {
     public Edition() {
     }
 
-    public Edition(Integer editionId, User author, String name, Conference conference, Calendar beginDate, Calendar endDate, Calendar beginSubmissions,
-                   Calendar endSubmissions, Calendar endBidding, Calendar endReview, Calendar created) {
+    public Edition(Integer editionId, Integer author, String name, Conference conference,LocalDate beginDate, LocalDate endDate, LocalDate beginSubmissions,
+                   LocalDate endSubmissions, LocalDate endBidding, LocalDate endReview, LocalDate created) {
         this.editionId = editionId;
-        //this.author = author;
+        this.author = author;
         this.name = name;
         //this.conference = conference;
         this.beginDate = beginDate;
@@ -73,13 +76,13 @@ public class Edition {
         this.editionId = editionId;
     }
 
-//    public User getAuthor() {
-//        return author;
-//    }
-//
-//    public void setAuthor(User author) {
-//        this.author = author;
-//    }
+    public int getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(int author) {
+        this.author = author;
+    }
 
     public String getName() {
         return name;
@@ -97,51 +100,51 @@ public class Edition {
 //        this.conference = conference;
 //    }
 
-    public Calendar getBeginDate() {
+    public LocalDate getBeginDate() {
         return beginDate;
     }
 
-    public void setBeginDate(Calendar beginDate) {
+    public void setBeginDate(LocalDate beginDate) {
         this.beginDate = beginDate;
     }
 
-    public Calendar getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Calendar endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
-    public Calendar getBeginSubmissions() {
+    public LocalDate getBeginSubmissions() {
         return beginSubmissions;
     }
 
-    public void setBeginSubmissions(Calendar beginSubmissions) {
+    public void setBeginSubmissions(LocalDate beginSubmissions) {
         this.beginSubmissions = beginSubmissions;
     }
 
-    public Calendar getEndSubmissions() {
+    public LocalDate getEndSubmissions() {
         return endSubmissions;
     }
 
-    public void setEndSubmissions(Calendar endSubmissions) {
+    public void setEndSubmissions(LocalDate endSubmissions) {
         this.endSubmissions = endSubmissions;
     }
 
-    public Calendar getEndBidding() {
+    public LocalDate getEndBidding() {
         return endBidding;
     }
 
-    public void setEndBidding(Calendar endBidding) {
+    public void setEndBidding(LocalDate endBidding) {
         this.endBidding = endBidding;
     }
 
-    public Calendar getEndReview() {
+    public LocalDate getEndReview() {
         return endReview;
     }
 
-    public void setEndReview(Calendar endReview) {
+    public void setEndReview(LocalDate endReview) {
         this.endReview = endReview;
     }
 //
