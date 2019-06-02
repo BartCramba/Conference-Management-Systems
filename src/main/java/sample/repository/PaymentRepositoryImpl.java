@@ -8,20 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class UserRepositoryImpl implements BaseRepository<User> {
+public class PaymentRepositoryImpl implements BaseRepository<Payment> {
 
     @PersistenceUnit(unitName = "sample")
     private EntityManager em;
 
-    public UserRepositoryImpl(EntityManager em) {
+    public PaymentRepositoryImpl(EntityManager em) {
         this.em = em;
     }
 
-    public UserRepositoryImpl() {}
+    public PaymentRepositoryImpl() {}
 
     @Override
-    public User findById(int id) {
-        return em.find(User.class, id);
+    public Payment findById(int id) {
+        return em.find(Payment.class, id);
     }
     /*
     @Override
@@ -31,7 +31,7 @@ public class UserRepositoryImpl implements BaseRepository<User> {
     */
 
     @Override
-    public User save(User object) {
+    public Payment save(Payment object) {
         try{
             em.getTransaction().begin();
             em.persist(object);
@@ -45,7 +45,7 @@ public class UserRepositoryImpl implements BaseRepository<User> {
     }
 
     @Override
-    public void delete(User object) {
+    public void delete(Payment object) {
         if (em.contains(object)) {
             em.remove(object);
         } else {
@@ -53,16 +53,14 @@ public class UserRepositoryImpl implements BaseRepository<User> {
         }
     }
 
-    public User getByUsername(String email, String password){
-        List<User> result = em.createNamedQuery(User.USER_LOGIN, User.class)
-                .setParameter(User.EMAIL, email)
-                .setParameter(User.PASSWORD,password)
+
+    public Payment getByUsername(String email){
+        List<Payment> result = em.createNamedQuery(Payment.PAYMENT, Payment.class)
+                .setParameter(Payment.EMAIL, email)
                 .getResultList();
         if(result.isEmpty()){
-            return new User();
+            return new Payment();
         }
         return result.get(0);
     }
-
-
 }
