@@ -15,34 +15,37 @@ public class Edition {
     @GeneratedValue
     private Integer editionId;
 
-    @ManyToOne
-    @JoinColumn(name="userId")
-    private User author;
+//    @ManyToOne
+//    @JoinColumn(name="userId")
+//    private User author;
 
     @Column(name="editionName")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name="conferenceId")
-    private Conference conference;   // the edition belongs to this conference
-
+//    @ManyToOne
+//    @JoinColumn(name="conferenceId")
+//    private Conference conference;   // the edition belongs to this conference
+    @Column(name="beginDate")
     @Temporal(TemporalType.DATE)
     private Calendar beginDate;
+    @Column(name="endDate")
     @Temporal(TemporalType.DATE)
     private Calendar endDate;
-
+    @Column(name="beginSubmissions")
     @Temporal(TemporalType.DATE)
     private Calendar beginSubmissions;
+    @Column(name="endSubmissions")
     @Temporal(TemporalType.DATE)
     private Calendar endSubmissions;
-
+    @Column(name="endBidding")
     @Temporal(TemporalType.DATE)
     private Calendar endBidding;
+    @Column(name="endReview")
     @Temporal(TemporalType.DATE)
     private Calendar endReview;
-
-    @Temporal(TemporalType.DATE)
-    private Calendar created;
+//    @Column(name="editionName")
+//    @Temporal(TemporalType.DATE)
+//    private Calendar created;
 
     public Edition() {
     }
@@ -50,16 +53,16 @@ public class Edition {
     public Edition(Integer editionId, User author, String name, Conference conference, Calendar beginDate, Calendar endDate, Calendar beginSubmissions,
                    Calendar endSubmissions, Calendar endBidding, Calendar endReview, Calendar created) {
         this.editionId = editionId;
-        this.author = author;
+        //this.author = author;
         this.name = name;
-        this.conference = conference;
+        //this.conference = conference;
         this.beginDate = beginDate;
         this.endDate = endDate;
         this.beginSubmissions = beginSubmissions;
         this.endSubmissions = endSubmissions;
         this.endBidding = endBidding;
         this.endReview = endReview;
-        this.created = created;
+        //this.created = created;
     }
 
     public Integer getEditionId() {
@@ -70,13 +73,13 @@ public class Edition {
         this.editionId = editionId;
     }
 
-    public User getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(User author) {
-        this.author = author;
-    }
+//    public User getAuthor() {
+//        return author;
+//    }
+//
+//    public void setAuthor(User author) {
+//        this.author = author;
+//    }
 
     public String getName() {
         return name;
@@ -86,13 +89,13 @@ public class Edition {
         this.name = name;
     }
 
-    public Conference getConference() {
-        return conference;
-    }
-
-    public void setConference(Conference conference) {
-        this.conference = conference;
-    }
+//    public Conference getConference() {
+//        return conference;
+//    }
+//
+//    public void setConference(Conference conference) {
+//        this.conference = conference;
+//    }
 
     public Calendar getBeginDate() {
         return beginDate;
@@ -141,29 +144,29 @@ public class Edition {
     public void setEndReview(Calendar endReview) {
         this.endReview = endReview;
     }
-
-    public Calendar getCreated() {
-        return created;
-    }
-
-    public void setCreated(Calendar created) {
-        this.created = created;
-    }
+//
+//    public Calendar getCreated() {
+//        return created;
+//    }
+//
+//    public void setCreated(Calendar created) {
+//        this.created = created;
+//    }
 
     @Override
     public String toString() {
         return "Edition{" +
                 "editionId=" + editionId +
-                ", author=" + author +
+
                 ", name='" + name + '\'' +
-                ", conference=" + conference +
+
                 ", beginDate=" + beginDate +
                 ", endDate=" + endDate +
                 ", beginSubmissions=" + beginSubmissions +
                 ", endSubmissions=" + endSubmissions +
                 ", endBidding=" + endBidding +
                 ", endReview=" + endReview +
-                ", created=" + created +
+
                 '}';
     }
 }

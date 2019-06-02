@@ -18,21 +18,22 @@ public class Session {
 
     @Column(name="sessionName")
     private String name;
+    @Column(name="sessionRoom")
     private String room;
 
-    @ManyToOne
-    @JoinColumn(name="userId")
-    private User user;
-
-    @ManyToOne
-    @JoinColumn(name="editionId")
-    private Edition edition;   // belonging to
+//    @ManyToOne
+//    @JoinColumn(name="userId")
+//    private User user;
+//
+//    @ManyToOne
+//    @JoinColumn(name="editionId")
+//    private Edition edition;   // belonging to
 
     public Session(String name, String room, User user, Edition edition) {
         this.name = name;
         this.room = room;
-        this.user = user;
-        this.edition = edition;
+//        this.user = user;
+//        this.edition = edition;
     }
 
     public Session() {
@@ -62,25 +63,25 @@ public class Session {
         this.room = room;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Edition getEdition() {
-        return edition;
-    }
-
-    public void setEdition(Edition edition) {
-        this.edition = edition;
-    }
-
-    public int getEditionId(){
-        return this.edition.getEditionId();
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
+//
+//    public Edition getEdition() {
+//        return edition;
+//    }
+//
+//    public void setEdition(Edition edition) {
+//        this.edition = edition;
+//    }
+//
+//    public int getEditionId(){
+//        return this.edition.getEditionId();
+//    }
 
     @Override
     public String toString() {
@@ -88,8 +89,6 @@ public class Session {
                 "sessionId=" + sessionId +
                 ", name='" + name + '\'' +
                 ", room='" + room + '\'' +
-                ", user=" + user +
-                ", edition=" + edition +
                 '}';
     }
 }
