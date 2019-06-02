@@ -13,7 +13,8 @@ import javax.persistence.*;
 //@SQLDelete( sql="DELETE _Session WHERE sessionId = ?")
 public class Session {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Integer sessionId;
 
     @Column(name="sessionName")
@@ -21,19 +22,19 @@ public class Session {
     @Column(name="sessionRoom")
     private String room;
 
-//    @ManyToOne
-//    @JoinColumn(name="userId")
-//    private User user;
-//
-//    @ManyToOne
-//    @JoinColumn(name="editionId")
-//    private Edition edition;   // belonging to
 
-    public Session(String name, String room, User user, Edition edition) {
+    @Column(name="userId")
+    private int user;
+
+
+    @Column(name="editionid")
+    private int edition;
+
+    public Session(String name, String room, Integer user, Integer edition) {
         this.name = name;
         this.room = room;
-//        this.user = user;
-//        this.edition = edition;
+        this.user = user;
+        this.edition = edition;
     }
 
     public Session() {
@@ -63,31 +64,33 @@ public class Session {
         this.room = room;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
-//
-//    public Edition getEdition() {
-//        return edition;
-//    }
-//
-//    public void setEdition(Edition edition) {
-//        this.edition = edition;
-//    }
-//
-//    public int getEditionId(){
-//        return this.edition.getEditionId();
-//    }
+    public Integer getUser() {
+        return user;
+    }
+
+    public void setUser(Integer user) {
+        this.user = user;
+    }
+
+    public Integer getEdition() {
+        return edition;
+    }
+
+    public void setEdition(Integer edition) {
+        this.edition = edition;
+    }
+
+    public Integer getEditionId(){
+        return this.edition;
+    }
 
     @Override
     public String toString() {
         return "Session{" +
                 "sessionId=" + sessionId +
                 ", name='" + name + '\'' +
+                ", name='" + user + '\'' +
+                ", name='" + edition + '\'' +
                 ", room='" + room + '\'' +
                 '}';
     }
