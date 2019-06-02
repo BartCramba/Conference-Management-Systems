@@ -64,5 +64,15 @@ public class UserRepositoryImpl implements BaseRepository<User> {
         return result.get(0);
     }
 
+    public User getByEmail(String email){
+        List<User> result = em.createNamedQuery(User.USER_EMAIL, User.class)
+                .setParameter(User.EMAIL, email)
+                .getResultList();
+        if(result.isEmpty()){
+            return new User();
+        }
+        return result.get(0);
+    }
+
 
 }

@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.domain.Proposal;
 import sample.domain.Topic;
+import sample.domain.User;
 import sample.repository.ProposalRepositoryImpl;
 import sample.repository.UserRepositoryImpl;
 
@@ -31,10 +32,14 @@ public class SpeakerController implements Initializable {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("sample");
     EntityManager em = emf.createEntityManager();
+    UserRepositoryImpl repo_user= new UserRepositoryImpl(em);
     ProposalRepositoryImpl repo = new ProposalRepositoryImpl(em);
 
     @FXML
     private Button submitProposalButton;
+
+    @FXML
+    private TextField email;
 
     @FXML
     private TextField proposalName;
@@ -49,6 +54,9 @@ public class SpeakerController implements Initializable {
     private TextField authors;
 
     public void handleSubmitProposalButton(ActionEvent actionEvent) {
+
+        User user = repo_user.getByEmail(email.getText());
+
         Proposal p = new Proposal();
 
         p.setName(proposalName.getText());
@@ -63,10 +71,18 @@ public class SpeakerController implements Initializable {
             l.add(topic);
         }
         p.setTopics(l);
+        p.setUser(user);
 
         System.out.println(p);
 
         repo.save(p);
+
+
+        if(user.getRole() == User.UserRole.listener)
+        {
+            user.setRole(User.UserRole.author);
+            System.out.println("you became author" + user.toString());
+        }
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText("SUCCESS");

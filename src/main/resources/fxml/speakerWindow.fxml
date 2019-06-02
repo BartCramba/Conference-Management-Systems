@@ -6,55 +6,64 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="731.0" prefWidth="526.0" style="-fx-background-color: #20B2AA;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.SpeakerController">
    <children>
-      <Text fill="#d0cccc" layoutX="42.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We need to know some information about you ! ">
+      <Text fill="#d0cccc" layoutX="43.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We need to know some information about you ! " wrappingWidth="439.8515625">
          <font>
             <Font name="Leelawadee UI Semilight" size="21.0" />
          </font>
       </Text>
-      <TextField fx:id="proposalName" layoutX="42.0" layoutY="175.0" prefHeight="29.0" prefWidth="435.0" promptText="l" style="-fx-background-color: #d0cccc; -fx-text-fill: #20B2AA;">
+      <Text fill="#d0cccc" layoutX="51.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="67.13671875">
+         <font>
+            <Font name="Leelawadee UI Semilight" size="21.0" />
+         </font>
+      </Text>
+      <TextField fx:id="email" layoutX="40.0" layoutY="171.0" prefHeight="29.0" prefWidth="435.0" style="-fx-background-color: #d0cccc; -fx-test-fill: #20B2AA;">
+         <font>
+            <Font name="Leelawadee UI Semilight" size="12.0" />
+         </font>
+      </TextField>
+      <Text fill="#d0cccc" layoutX="41.0" layoutY="242.0" stroke="#e44c4c" strokeType="OUTSIDE" strokeWidth="0.0" text="Name of the Proposal">
+         <font>
+            <Font name="Leelawadee UI Semilight" size="21.0" />
+         </font>
+      </Text>
+      <TextField fx:id="proposalName" layoutX="40.0" layoutY="275.0" prefHeight="29.0" prefWidth="435.0" style="-fx-background-color: #d0cccc; -fx-text-fill: #20B2AA;">
          <font>
             <Font name="Leelawadee UI Semilight" size="13.0" />
          </font>
       </TextField>
-      <Text fill="#d0cccc" layoutX="42.0" layoutY="147.0" stroke="#e44c4c" strokeType="OUTSIDE" strokeWidth="0.0" text="Name of the Proposal">
+      <Text fill="#d0cccc" layoutX="42.0" layoutY="350.0" stroke="#e44c4c" strokeType="OUTSIDE" strokeWidth="0.0" text="Keywords">
          <font>
             <Font name="Leelawadee UI Semilight" size="21.0" />
          </font>
       </Text>
-      <Text fill="#d0cccc" layoutX="42.0" layoutY="265.0" stroke="#e44c4c" strokeType="OUTSIDE" strokeWidth="0.0" text="Keywords">
-         <font>
-            <Font name="Leelawadee UI Semilight" size="21.0" />
-         </font>
-      </Text>
-      <TextField fx:id="keywords" layoutX="42.0" layoutY="288.0" prefHeight="29.0" prefWidth="435.0" promptText="l" style="-fx-background-color: #d0cccc; -fx-text-fill: #20B2AA;">
+      <TextField fx:id="keywords" layoutX="40.0" layoutY="378.0" prefHeight="29.0" prefWidth="435.0" promptText="l" style="-fx-background-color: #d0cccc; -fx-text-fill: #20B2AA;">
          <font>
             <Font name="Leelawadee UI Semilight" size="13.0" />
          </font>
       </TextField>
-      <Text fill="#d0cccc" layoutX="42.0" layoutY="381.0" stroke="#e44c4c" strokeType="OUTSIDE" strokeWidth="0.0" text="Topics">
+      <Text fill="#d0cccc" layoutX="42.0" layoutY="449.0" stroke="#e44c4c" strokeType="OUTSIDE" strokeWidth="0.0" text="Topics">
          <font>
             <Font name="Leelawadee UI Semilight" size="21.0" />
          </font>
       </Text>
-      <TextField fx:id="topics" layoutX="42.0" layoutY="403.0" prefHeight="29.0" prefWidth="435.0" promptText="l" style="-fx-background-color: #d0cccc; -fx-text-fill: #20B2AA;">
+      <TextField fx:id="topics" layoutX="40.0" layoutY="479.0" prefHeight="29.0" prefWidth="435.0" promptText="l" style="-fx-background-color: #d0cccc; -fx-text-fill: #20B2AA;">
          <font>
             <Font name="Leelawadee UI Semilight" size="13.0" />
          </font>
       </TextField>
-      <Text fill="#d0cccc" layoutX="40.0" layoutY="496.0" stroke="#e44c4c" strokeType="OUTSIDE" strokeWidth="0.0" text="Possible list of authors">
+      <Text fill="#d0cccc" layoutX="40.0" layoutY="551.0" stroke="#e44c4c" strokeType="OUTSIDE" strokeWidth="0.0" text="Possible list of authors">
          <font>
             <Font name="Leelawadee UI Semilight" size="21.0" />
          </font>
       </Text>
-      <TextField fx:id="authors" layoutX="42.0" layoutY="519.0" prefHeight="29.0" prefWidth="435.0" promptText="l" style="-fx-background-color: #d0cccc; -fx-text-fill: #20B2AA;">
+      <TextField fx:id="authors" layoutX="40.0" layoutY="584.0" prefHeight="29.0" prefWidth="440.0" promptText="l" style="-fx-background-color: #d0cccc; -fx-text-fill: #20B2AA;">
          <font>
             <Font name="Leelawadee UI Semilight" size="13.0" />
          </font>
       </TextField>
-      <Button fx:id="submitProposalButton" layoutX="180.0" layoutY="608.0" mnemonicParsing="false" onAction="#handleSubmitProposalButton" style="-fx-background-color: #d0cccc;" text="Submit Proposal" textFill="LIGHTSEAGREEN">
+      <Button fx:id="submitProposalButton" layoutX="173.0" layoutY="639.0" mnemonicParsing="false" onAction="#handleSubmitProposalButton" style="-fx-background-color: #d0cccc;" text="Submit Proposal" textFill="LIGHTSEAGREEN">
          <font>
             <Font name="Leelawadee UI" size="20.0" />
          </font>
