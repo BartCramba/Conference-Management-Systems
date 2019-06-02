@@ -9,12 +9,12 @@
 
 <AnchorPane prefHeight="731.0" prefWidth="526.0" style="-fx-background-color: #20B2AA;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.SpeakerController">
    <children>
-      <Text fill="#d0cccc" layoutX="42.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We need to know some informations about you ! ">
+      <Text fill="#d0cccc" layoutX="42.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We need to know some information about you ! ">
          <font>
             <Font name="Leelawadee UI Semilight" size="21.0" />
          </font>
       </Text>
-      <TextField layoutX="42.0" layoutY="175.0" prefHeight="29.0" prefWidth="435.0" promptText="l" style="-fx-background-color: #d0cccc; -fx-text-fill: #20B2AA;">
+      <TextField fx:id="proposalName" layoutX="42.0" layoutY="175.0" prefHeight="29.0" prefWidth="435.0" promptText="l" style="-fx-background-color: #d0cccc; -fx-text-fill: #20B2AA;">
          <font>
             <Font name="Leelawadee UI Semilight" size="13.0" />
          </font>
@@ -29,7 +29,7 @@
             <Font name="Leelawadee UI Semilight" size="21.0" />
          </font>
       </Text>
-      <TextField layoutX="42.0" layoutY="288.0" prefHeight="29.0" prefWidth="435.0" promptText="l" style="-fx-background-color: #d0cccc; -fx-text-fill: #20B2AA;">
+      <TextField fx:id="keywords" layoutX="42.0" layoutY="288.0" prefHeight="29.0" prefWidth="435.0" promptText="l" style="-fx-background-color: #d0cccc; -fx-text-fill: #20B2AA;">
          <font>
             <Font name="Leelawadee UI Semilight" size="13.0" />
          </font>
@@ -39,7 +39,7 @@
             <Font name="Leelawadee UI Semilight" size="21.0" />
          </font>
       </Text>
-      <TextField layoutX="42.0" layoutY="403.0" prefHeight="29.0" prefWidth="435.0" promptText="l" style="-fx-background-color: #d0cccc; -fx-text-fill: #20B2AA;">
+      <TextField fx:id="topics" layoutX="42.0" layoutY="403.0" prefHeight="29.0" prefWidth="435.0" promptText="l" style="-fx-background-color: #d0cccc; -fx-text-fill: #20B2AA;">
          <font>
             <Font name="Leelawadee UI Semilight" size="13.0" />
          </font>
@@ -49,7 +49,7 @@
             <Font name="Leelawadee UI Semilight" size="21.0" />
          </font>
       </Text>
-      <TextField layoutX="42.0" layoutY="519.0" prefHeight="29.0" prefWidth="435.0" promptText="l" style="-fx-background-color: #d0cccc; -fx-text-fill: #20B2AA;">
+      <TextField fx:id="authors" layoutX="42.0" layoutY="519.0" prefHeight="29.0" prefWidth="435.0" promptText="l" style="-fx-background-color: #d0cccc; -fx-text-fill: #20B2AA;">
          <font>
             <Font name="Leelawadee UI Semilight" size="13.0" />
          </font>
