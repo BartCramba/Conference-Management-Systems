@@ -81,6 +81,7 @@ public class SpeakerController implements Initializable {
         if(user.getRole() == User.UserRole.listener)
         {
             user.setRole(User.UserRole.author);
+            repo_user.updateRole(User.UserRole.author, email.getText());
             System.out.println("you became author" + user.toString());
         }
 

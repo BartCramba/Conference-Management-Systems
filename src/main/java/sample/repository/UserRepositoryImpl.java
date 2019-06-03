@@ -4,6 +4,7 @@ import sample.domain.User;
 
 import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,6 +73,20 @@ public class UserRepositoryImpl implements BaseRepository<User> {
             return new User();
         }
         return result.get(0);
+    }
+
+
+    @Transactional
+    public void updateRole(User.UserRole role, String email){
+
+        em.getTransaction().begin();
+        Query query = em.createQuery("update User SET role = :role where email = :email")
+                .setParameter("role", role)
+                .setParameter("email", email);
+
+        int result = query.executeUpdate();
+
+        em.getTransaction().commit();
     }
 
 
