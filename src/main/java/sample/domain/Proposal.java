@@ -18,6 +18,7 @@ import java.util.List;
         name="Proposal.findByUsername",
         query="SELECT u FROM Proposal u WHERE u.user = :user")
 
+
 public class Proposal {
     public static final String PROPOSAL = "Proposal.findByUsername";
     public static final String USER = "user";
