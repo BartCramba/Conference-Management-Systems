@@ -63,10 +63,6 @@ public class CreateEditionController implements Initializable  {
 
         User u=repo1.getByUsername1(email1);
         System.out.println(u.getId());
-        newEd.setAuthor(u.getId());
-
-
-
 
 
 

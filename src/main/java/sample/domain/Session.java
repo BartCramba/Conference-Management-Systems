@@ -5,13 +5,23 @@ import org.hibernate.annotations.SQLInsert;
 import org.hibernate.annotations.SQLUpdate;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="Session")
+@NamedQuery(
+        name="Session.findAllSessions",
+        query="SELECT s FROM Session s "
+)
 //@SQLInsert( sql="INSERT INTO _Session(sessionId, sessionName, room, userId, editionId) VALUES(?,?,?,?,?)")
 //@SQLUpdate( sql="UPDATE _Session SET sessionName = ?, room = ?, userId = ?, editionId = ? WHERE sessionId = ?")
 //@SQLDelete( sql="DELETE _Session WHERE sessionId = ?")
 public class Session {
+
+    public static final String SESSIONS_ALL = "Session.findAllSessions";
+
+
 
     @Id
     @GeneratedValue
@@ -86,12 +96,9 @@ public class Session {
 
     @Override
     public String toString() {
-        return "Session{" +
-                "sessionId=" + sessionId +
-                ", name='" + name + '\'' +
-                ", name='" + user + '\'' +
-                ", name='" + edition + '\'' +
-                ", room='" + room + '\'' +
-                '}';
+        return "\t-" + name + "\n" +
+                "This will take place in room number" + room + "\n" +
+                "Session is hold by: ";
+
     }
 }
