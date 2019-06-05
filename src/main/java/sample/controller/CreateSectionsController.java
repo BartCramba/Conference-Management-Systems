@@ -50,15 +50,13 @@ public class CreateSectionsController implements Initializable {
         String email1=email.getText();
 
         User u=repo1.getByUsername1(email1);
-        System.out.println(u);
-        System.out.println(newSection);
         newSection.setUser(u.getId());
 
         /////!!!!!!!!!!!!1QUERY SA IAU UN ID VALABIL DIN EDITIE
 
         newSection.setEdition(28);
         System.out.println(newSection);
-        //newSection.setAuthor(u.getId());
+
 
 
 
