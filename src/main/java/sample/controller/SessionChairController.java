@@ -17,7 +17,8 @@ public class SessionChairController implements Initializable {
     private static final String sectionFxmlFile = "/fxml/CreateSectionsWindow.fxml";
     private static final String editionFxmlFile = "/fxml/editionWindow.fxml";
     private static final String bidFxmlFile = "/fxml/bidWindow.fxml";
-    private static final String changedeadlinesFxmlFile = "/fxml/changeWindow.fxml";
+    private static final String deadFxmlFile = "/fxml/changeDeadlines.fxml";
+
 
     @FXML
     private Button createEdition;
@@ -26,16 +27,13 @@ public class SessionChairController implements Initializable {
     private Button createSection;
 
     @FXML
-    private Button changedeadlines;
+    public Button change;
 
     @FXML
     private Button bid;
 
     @FXML
         void handleCreateEditionButton(ActionEvent event) {
-
-
-
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(editionFxmlFile));
                 Parent root1 = (Parent) fxmlLoader.load();
@@ -56,7 +54,7 @@ public class SessionChairController implements Initializable {
     @FXML
     void handleCreateSessionButton(ActionEvent event) {
 
-
+        System.out.println("cplm");
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(sectionFxmlFile));
@@ -74,10 +72,47 @@ public class SessionChairController implements Initializable {
         }
     }
 
+    @FXML
+    void handleDeadlinesButton(ActionEvent event) {
+
+
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(deadFxmlFile));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+
+            stage.setScene(new Scene(root1));
+            stage.show();
+
+            stage = (Stage) change.getScene().getWindow();
+            stage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
 
+    public void handleBidingButton(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(bidFxmlFile));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+
+            stage.setScene(new Scene(root1));
+            stage.show();
+
+            stage = (Stage) bid.getScene().getWindow();
+            stage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

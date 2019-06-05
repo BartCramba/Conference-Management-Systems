@@ -14,7 +14,6 @@ import java.util.List;
 //@SQLInsert( sql="INSERT INTO Proposal(proposalId, userId, editionId, proposalName, proposalDescription, keywords, statuses) VALUES(?,?,?,?,?,?,?)")
 //@SQLUpdate( sql="UPDATE Proposal SET userId = ?, editionId = ?, proposalName = ?, proposalDescription = ?, keywords = ?, statuses = ? WHERE proposalId = ?")
 //@SQLDelete( sql="DELETE Proposal WHERE proposalId = ?")
-
 @NamedQuery(
         name="Proposal.findByUsername",
         query="SELECT u FROM Proposal u WHERE u.user = :user")
