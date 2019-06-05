@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #9C2B27;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.BidingController">
+   <children>
+      <TableView fx:id="table" layoutX="118.0" layoutY="100.0" onMouseClicked="#clickedColumn" prefHeight="200.0" prefWidth="292.0">
+        <columns>
+          <TableColumn fx:id="colName" prefWidth="166.0" text="Proposal" />
+        </columns>
+      </TableView>
+      <Button fx:id="yes" layoutX="160.0" layoutY="333.0" mnemonicParsing="false" style="-fx-background-color: #E45652;" text="Yes" />
+      <Button fx:id="no" layoutX="268.0" layoutY="333.0" mnemonicParsing="false" style="-fx-background-color: #E45652;" text="No" />
+      <Label layoutX="132.0" layoutY="47.0" text="Do you want to evaluate these?" textFill="#f2f2f2" />
+   </children>
+</AnchorPane>
