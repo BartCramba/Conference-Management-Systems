@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="598.0" prefWidth="477.0" style="-fx-background-color: #9C2B27;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.CreateEditionController">
+   <children>
+      <Label layoutX="120.0" layoutY="6.0" prefHeight="70.0" prefWidth="290.0" text="Create Edition" textFill="WHITE">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <TextField fx:id="editionName" layoutX="109.0" layoutY="132.0" prefHeight="30.0" prefWidth="276.0" promptText="name" style="-fx-background-color: #9C2B27; -fx-text-fill: #cfceee;">
+         <effect>
+            <InnerShadow color="#cfceee" height="12.0" radius="7.75" />
+         </effect>
+         <font>
+            <Font name="Leelawadee UI" size="14.0" />
+         </font>
+      </TextField>
+      <DatePicker fx:id="beginDate" layoutX="109.0" layoutY="179.0" prefHeight="36.0" prefWidth="276.0" promptText="begin date" />
+      <DatePicker fx:id="endDate" layoutX="109.0" layoutY="234.0" prefHeight="36.0" prefWidth="276.0" promptText="end date" />
+      <DatePicker fx:id="beginSubmissions" layoutX="109.0" layoutY="291.0" prefHeight="36.0" prefWidth="276.0" promptText="beginSubmissions" />
+      <DatePicker fx:id="endSubmissions" layoutX="109.0" layoutY="346.0" prefHeight="36.0" prefWidth="276.0" promptText="endSubmissions" />
+      <DatePicker fx:id="endBidding" layoutX="109.0" layoutY="413.0" prefHeight="36.0" prefWidth="276.0" promptText="endBidding" />
+      <DatePicker fx:id="endReview" layoutX="109.0" layoutY="470.0" prefHeight="36.0" prefWidth="276.0" promptText="endReview" />
+      <Button fx:id="nextButton" layoutX="190.0" layoutY="529.0" mnemonicParsing="false" style="-fx-background-color: #E45652;" onAction="#handleNextButton" text="Create" textFill="#cfceee">
+         <font>
+            <Font name="Leelawadee UI Semilight" size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="email" layoutX="109.0" layoutY="90.0" prefHeight="30.0" prefWidth="276.0" promptText="email" style="-fx-background-color: #9C2B27; -fx-text-fill: #cfceee;">
+         <effect>
+            <InnerShadow color="#cfceee" height="12.0" radius="7.75" />
+         </effect>
+         <font>
+            <Font name="Leelawadee UI" size="14.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

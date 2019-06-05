@@ -6,9 +6,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.controller.SessionChairController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="428.0" prefWidth="608.0" style="-fx-background-color: #9C2B27;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.SessionChairController">
+   <children>
+      <Button fx:id="createEdition" layoutX="175.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleCreateEditionButton" prefHeight="25.0" prefWidth="226.0" style="-fx-background-color: #E45652;" text="Create Edition" />
+      <Button fx:id="createSection" layoutX="175.0" layoutY="238.0" mnemonicParsing="false" onAction="#handleCreateSessionButton" prefHeight="25.0" prefWidth="226.0" style="-fx-background-color: #E45652;" text="Create Sections" />
+      <Button fx:id="changedeadlines" layoutX="175.0" layoutY="144.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="226.0" style="-fx-background-color: #E45652;" text="Change Deadlines" />
+      <Button fx:id="bid" layoutX="175.0" layoutY="61.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="226.0" style="-fx-background-color: #E45652;" text="Bid Proposals" />
+   </children>
 </AnchorPane>

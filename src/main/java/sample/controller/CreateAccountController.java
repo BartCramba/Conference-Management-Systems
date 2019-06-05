@@ -6,6 +6,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.stage.Stage;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -13,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.domain.User;
 import sample.repository.UserRepositoryImpl;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -86,6 +92,13 @@ public class CreateAccountController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+    }
+
+    @FXML
+    void handleCreateButton(ActionEvent event) {
+
 
 
     }

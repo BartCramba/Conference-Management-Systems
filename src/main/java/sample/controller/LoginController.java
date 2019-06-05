@@ -44,11 +44,11 @@ public class LoginController implements Initializable {
 
     @FXML
     private ChoiceBox<String> choiceBox;
-
+    static User resultUser;
     @FXML
     void handleLoginButton(ActionEvent event) {
 
-        User resultUser = repo.getByUsername(email.getText(),password.getText());
+        this.resultUser = repo.getByUsername(email.getText(),password.getText());
         if (resultUser.getFirstName() == null)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -108,6 +108,7 @@ public class LoginController implements Initializable {
                 alert.show();
             }
         }
+
     }
 
     public void pay(String fxmlFile){
@@ -135,10 +136,16 @@ public class LoginController implements Initializable {
                 stage.setScene(new Scene(root1));
                 stage.show();
 
+                stage = (Stage) loginButton.getScene().getWindow();
+                stage.close();
+
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
     }
 
 
