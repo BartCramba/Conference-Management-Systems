@@ -10,8 +10,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import sample.domain.Edition;
+import sample.repository.EditionRepositoryImpl;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ListenerController implements Initializable {
@@ -19,6 +24,10 @@ public class ListenerController implements Initializable {
     private static final String sessionFxmlFile = "/fxml/sessionsWindow.fxml";
     private static final String speakerFxmlFile = "/fxml/speakerWindow.fxml";
     private static final String callForPapersFile = "/fxml/callForPapersWindow.fxml";
+
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("sample");
+    EntityManager em = emf.createEntityManager();
+    EditionRepositoryImpl repo = new EditionRepositoryImpl(em);
 
     @FXML
     private Button viewSessionsButton;
@@ -83,7 +92,11 @@ public class ListenerController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        List<Edition> edition = em.createNamedQuery(Edition.EDITION, Edition.class)
+                .getResultList();
 
-        this.textBoxInformationEdition.appendText("Bart are pula mare.");
+        Edition ed = edition.get(0);
+
+        this.textBoxInformationEdition.appendText(ed.toString());
     }
 }

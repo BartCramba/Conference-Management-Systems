@@ -10,22 +10,22 @@ import java.util.Date;
 @Table(name="Edition")
 @NamedQuery(
         name="Edition.findById",
-        query="SELECT e FROM Edition e WHERE e.id = :editionId"
+        query="SELECT e FROM Edition e WHERE e.id = 28"
 )
 
 //@SQLInsert( sql="INSERT INTO Edition(editionId, author, editionName, conferenceId, beginDate, endDate, beginSubmissions, endSubmissions, endBidding, endReview, created) VALUES(?,?,?,?,?,?,?,?,?,?,?)")
 //@SQLUpdate( sql="UPDATE Edition SET author = ?, editionName = ?, conferenceId = ?, beginDate = ?, endDate = ?, beginSubmissions = ?, endSubmissions = ?, endBidding = ?, endReview = ?, created = ? WHERE editionId = ?")
 //@SQLDelete( sql="DELETE Edition WHERE editionId = ?")
 public class Edition {
-    public static final String EDITION = "EDITION.findByUsername";
+    public static final String EDITION = "Edition.findById";
     public static final String EMAIL = "email";
     @Id
     @GeneratedValue
     private Integer editionId;
 
-    //@ManyToOne
-    @Column(name="userId")
-    private int author;
+//    //@ManyToOne
+//    @Column(name="userId")
+//    private int author;
 
     @Column(name="editionName")
     private String name;
@@ -58,10 +58,10 @@ public class Edition {
     public Edition() {
     }
 
-    public Edition(Integer editionId, Integer author, String name, Conference conference,LocalDate beginDate, LocalDate endDate, LocalDate beginSubmissions,
+    public Edition(Integer editionId,  String name, Conference conference,LocalDate beginDate, LocalDate endDate, LocalDate beginSubmissions,
                    LocalDate endSubmissions, LocalDate endBidding, LocalDate endReview, LocalDate created) {
         this.editionId = editionId;
-        this.author = author;
+//        this.author = author;
         this.name = name;
         //this.conference = conference;
         this.beginDate = beginDate;
@@ -81,13 +81,6 @@ public class Edition {
         this.editionId = editionId;
     }
 
-    public int getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(int author) {
-        this.author = author;
-    }
 
     public String getName() {
         return name;
@@ -163,18 +156,28 @@ public class Edition {
 
     @Override
     public String toString() {
-        return "Edition{" +
-                "editionId=" + editionId +
-
-                ", name='" + name + '\'' +
-
-                ", beginDate=" + beginDate +
-                ", endDate=" + endDate +
-                ", beginSubmissions=" + beginSubmissions +
-                ", endSubmissions=" + endSubmissions +
-                ", endBidding=" + endBidding +
-                ", endReview=" + endReview +
-
-                '}';
+        return " \n\t\t WELCOME to the " + name + " edition !!! \n\n" +
+                " \n \t The edition will take place between " + beginDate +
+                " and " + endDate +
+                " \n\t Please send the submissions between " + beginSubmissions +
+                " and " + endSubmissions +
+                " \n\t The final date for the bidding : " + endBidding +
+                " \n\t Accepted participants will be announcecd on " + endReview;
     }
+//    @Override
+//    public String toString() {
+//        return "Edition{" +
+//                "editionId=" + editionId +
+//
+//                ", name='" + name + '\'' +
+//
+//                ", beginDate=" + beginDate +
+//                ", endDate=" + endDate +
+//                ", beginSubmissions=" + beginSubmissions +
+//                ", endSubmissions=" + endSubmissions +
+//                ", endBidding=" + endBidding +
+//                ", endReview=" + endReview +
+//
+//                '}';
+//    }
 }
