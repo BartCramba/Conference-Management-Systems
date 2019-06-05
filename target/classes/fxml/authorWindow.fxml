@@ -23,7 +23,7 @@
                </font>
             </Label>
             <TextField fx:id="email" layoutX="37.0" layoutY="97.0" />
-            <Button fx:id="getProposalsButton" layoutX="62.0" layoutY="141.0" mnemonicParsing="false" onAction="#handleGetProposalsButton" text="Get proposals" textFill="LIGHTSEAGREEN" />
+            <Button fx:id="getProposalsButton" layoutX="62.0" layoutY="141.0" mnemonicParsing="false" onAction="#handleGetProposalsButton" text="Get proposal" textFill="LIGHTSEAGREEN" />
             <TextArea fx:id="proposals" layoutX="301.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
             <Label layoutX="43.0" layoutY="242.0" text="Status of proposal" textFill="#f8f1f1">
                <font>

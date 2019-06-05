@@ -13,22 +13,24 @@ import javax.persistence.*;
 //@SQLDelete( sql="DELETE _Session WHERE sessionId = ?")
 public class Session {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Integer sessionId;
 
     @Column(name="sessionName")
     private String name;
+    @Column(name="sessionRoom")
     private String room;
 
-    @ManyToOne
-    @JoinColumn(name="userId")
-    private User user;
 
-    @ManyToOne
-    @JoinColumn(name="editionId")
-    private Edition edition;   // belonging to
+    @Column(name="userId")
+    private int user;
 
-    public Session(String name, String room, User user, Edition edition) {
+
+    @Column(name="editionid")
+    private int edition;
+
+    public Session(String name, String room, Integer user, Integer edition) {
         this.name = name;
         this.room = room;
         this.user = user;
@@ -62,24 +64,24 @@ public class Session {
         this.room = room;
     }
 
-    public User getUser() {
+    public Integer getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Integer user) {
         this.user = user;
     }
 
-    public Edition getEdition() {
+    public Integer getEdition() {
         return edition;
     }
 
-    public void setEdition(Edition edition) {
+    public void setEdition(Integer edition) {
         this.edition = edition;
     }
 
-    public int getEditionId(){
-        return this.edition.getEditionId();
+    public Integer getEditionId(){
+        return this.edition;
     }
 
     @Override
@@ -87,9 +89,9 @@ public class Session {
         return "Session{" +
                 "sessionId=" + sessionId +
                 ", name='" + name + '\'' +
+                ", name='" + user + '\'' +
+                ", name='" + edition + '\'' +
                 ", room='" + room + '\'' +
-                ", user=" + user +
-                ", edition=" + edition +
                 '}';
     }
 }

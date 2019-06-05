@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #9C2B27;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.CreateSectionsController">
+   <children>
+      <TextField fx:id="sessionName" layoutX="162.0" layoutY="185.0" prefHeight="30.0" prefWidth="276.0" promptText="sessionName" style="-fx-background-color: #9C2B27; -fx-text-fill: #cfceee;">
+         <effect>
+            <InnerShadow color="#cfceee" height="12.0" radius="7.75" />
+         </effect>
+         <font>
+            <Font name="Leelawadee UI" size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="184.0" layoutY="14.0" prefHeight="70.0" prefWidth="290.0" text="Create Section" textFill="WHITE">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <TextField fx:id="sessionRoom" layoutX="162.0" layoutY="242.0" prefHeight="30.0" prefWidth="276.0" promptText="sessionRoom" style="-fx-background-color: #9C2B27; -fx-text-fill: #cfceee;">
+         <effect>
+            <InnerShadow color="#cfceee" height="12.0" radius="7.75" />
+         </effect>
+         <font>
+            <Font name="Leelawadee UI" size="14.0" />
+         </font>
+      </TextField>
+      <Button fx:id="nextButton" layoutX="254.0" layoutY="302.0" mnemonicParsing="false" style="-fx-background-color: #E45652;" onAction="#handleNextButton" text="Create" textFill="#cfceee">
+         <font>
+            <Font name="Leelawadee UI Semilight" size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="email" layoutX="162.0" layoutY="130.0" prefHeight="30.0" prefWidth="276.0" promptText="email" style="-fx-background-color: #9C2B27; -fx-text-fill: #cfceee;">
+         <effect>
+            <InnerShadow color="#cfceee" height="12.0" radius="7.75" />
+         </effect>
+         <font>
+            <Font name="Leelawadee UI" size="14.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

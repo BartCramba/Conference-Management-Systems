@@ -7,7 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import sample.domain.Edition;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,6 +28,9 @@ public class ListenerController implements Initializable {
 
     @FXML
     private Button callForPapersButton;
+
+    @FXML
+    private TextArea textBoxInformationEdition;
 
     @FXML
     void handleViewSessionsButton(ActionEvent event) {
@@ -78,5 +83,7 @@ public class ListenerController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+
+        this.textBoxInformationEdition.appendText("Bart are pula mare.");
     }
 }
