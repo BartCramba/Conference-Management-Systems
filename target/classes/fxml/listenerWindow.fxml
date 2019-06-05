@@ -37,12 +37,7 @@
             <Font name="Leelawadee UI Bold" size="22.0" />
          </font>
       </Text>
-      <Button fx:id="joinSpeakerButton" layoutX="625.0" layoutY="558.0" mnemonicParsing="false" onAction="#handleJoinSpeakerButton" prefHeight="31.0" prefWidth="157.0" text="Join us as a Speaker" textFill="LIGHTSEAGREEN">
-         <font>
-            <Font name="Leelawadee UI" size="15.0" />
-         </font>
-      </Button>
-      <Button fx:id="callForPapersButton" layoutX="619.0" layoutY="613.0" mnemonicParsing="false" onAction="#handleCallForPapersButton" prefHeight="31.0" prefWidth="157.0" text="Call for papers" textFill="LIGHTSEAGREEN">
+      <Button fx:id="joinSpeakerButton" layoutX="625.0" layoutY="558.0" mnemonicParsing="false" onAction="#handleJoinSpeakerButton" prefHeight="31.0" prefWidth="157.0" text="Join us as an Author" textFill="LIGHTSEAGREEN">
          <font>
             <Font name="Leelawadee UI" size="15.0" />
          </font>

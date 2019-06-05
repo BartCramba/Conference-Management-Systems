@@ -30,6 +30,11 @@ import javax.persistence.*;
         name="User.findByUsername1",
         query="SELECT u FROM User u WHERE u.email = :email"
 )
+@NamedQuery(
+        name="User.findSpeakers",
+        query="SELECT u FROM User u WHERE u.role = 'speaker'"
+)
+
 //@SQLInsert( sql="INSERT INTO Users(userId, firstName, lastName, email, password, userRole) VALUES(?,?,?,?,?,?)")
 //@SQLUpdate( sql="UPDATE Users SET firstName = ?, lastName = ?, email = ?, password = ?, userRole = ? WHERE userId = ?")
 //@SQLDelete( sql="DELETE Users WHERE userId = ?")
@@ -42,6 +47,9 @@ public class User {
     public static final String USER_1 = "User.findByUsername1";
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
+    public static final String ALL_SPEAKERS = "User.findSpeakers";
+    public static final String SPEAKER = "speaker";
+
     @Id
     @GeneratedValue
     private int userId;
