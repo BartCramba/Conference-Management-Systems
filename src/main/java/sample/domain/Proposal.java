@@ -21,6 +21,7 @@ import java.util.List;
 
 public class Proposal {
     public static final String PROPOSAL = "Proposal.findByUsername";
+    public static final String USER = "user";
 
     @Id
     @GeneratedValue

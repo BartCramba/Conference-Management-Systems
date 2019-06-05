@@ -2,9 +2,11 @@ package sample.repository;
 
 
 import sample.domain.Proposal;
+import sample.domain.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceUnit;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProposalRepositoryImpl implements BaseRepository<Proposal> {
@@ -53,14 +55,24 @@ public class ProposalRepositoryImpl implements BaseRepository<Proposal> {
     }
 
 
-//    public Proposal getByUsername(String email){
-//        List<Proposal> result = em.createNamedQuery(Proposal.PROPOSAL, Proposal.class)
-//                .setParameter(Proposal.EMAIL, email)
-//                .getResultList();
-//        if(result.isEmpty()){
-//            return new Proposal();
-//        }
-//        return result.get(0);
-//    }
+    public List<Proposal> getByUser(User userid){
+        List<Proposal> result = em.createNamedQuery(Proposal.PROPOSAL, Proposal.class)
+                .setParameter(Proposal.USER, userid)
+                .getResultList();
+        if(result.isEmpty()){
+            return new ArrayList<>();
+        }
+        return result;
+    }
+
+    public Proposal getByUserOne(User userid){
+        List<Proposal> result = em.createNamedQuery(Proposal.PROPOSAL, Proposal.class)
+                .setParameter(Proposal.USER, userid)
+                .getResultList();
+        if(result.isEmpty()){
+            return new Proposal();
+        }
+        return result.get(0);
+    }
 }
 

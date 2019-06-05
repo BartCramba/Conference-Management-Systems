@@ -64,6 +64,7 @@ public class SpeakerController implements Initializable {
         p.setKeywords(Arrays.asList(k));
         String[] t = topics.getText().split(",");
 
+
         List<Topic> l = new ArrayList<Topic>();
         for(String s : t) {
             Topic topic = new Topic();
