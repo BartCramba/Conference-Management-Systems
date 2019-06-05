@@ -35,7 +35,7 @@
          <children>
             <AnchorPane layoutX="372.0" layoutY="72.0" prefHeight="478.0" prefWidth="408.0" style="-fx-background-color: #9C2B27;">
                <children>
-                  <TextField fx:id="email" layoutX="60.0" layoutY="123.0" prefHeight="25.0" prefWidth="313.0" promptText="uername/email" style="-fx-background-color: #9C2B27; -fx-text-fill: #cfceee;">
+                  <TextField fx:id="email" layoutX="60.0" layoutY="123.0" prefHeight="25.0" prefWidth="313.0" promptText="username/email" style="-fx-background-color: #9C2B27; -fx-text-fill: #cfceee;">
                      <effect>
                         <InnerShadow color="#cfceee" height="12.1" radius="7.775" />
                      </effect>

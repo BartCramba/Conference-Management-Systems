@@ -8,6 +8,11 @@ import java.util.Date;
 
 @Entity
 @Table(name="Edition")
+@NamedQuery(
+        name="Edition.findById",
+        query="SELECT e FROM Edition e WHERE e.id = :editionId"
+)
+
 //@SQLInsert( sql="INSERT INTO Edition(editionId, author, editionName, conferenceId, beginDate, endDate, beginSubmissions, endSubmissions, endBidding, endReview, created) VALUES(?,?,?,?,?,?,?,?,?,?,?)")
 //@SQLUpdate( sql="UPDATE Edition SET author = ?, editionName = ?, conferenceId = ?, beginDate = ?, endDate = ?, beginSubmissions = ?, endSubmissions = ?, endBidding = ?, endReview = ?, created = ? WHERE editionId = ?")
 //@SQLDelete( sql="DELETE Edition WHERE editionId = ?")

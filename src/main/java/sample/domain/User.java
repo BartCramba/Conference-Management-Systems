@@ -19,6 +19,14 @@ import javax.persistence.*;
         query="SELECT u FROM User u WHERE u.email = :email and u.passsword = :password"
 )
 @NamedQuery(
+        name="User.findByEmail",
+        query="SELECT u FROM User u WHERE u.email = :email"
+)
+@NamedQuery(
+        name="User.updateRole",
+        query="update User SET role = :role where email = :email"
+)
+@NamedQuery(
         name="User.findByUsername1",
         query="SELECT u FROM User u WHERE u.email = :email"
 )
@@ -28,6 +36,9 @@ import javax.persistence.*;
 public class User {
 
     public static final String USER_LOGIN = "User.findByUsername";
+    public static final String USER_EMAIL = "User.findByEmail";
+    public static final String USER_setrole = "User.updateRole";
+    public static final String ROLE = "role";
     public static final String USER_1 = "User.findByUsername1";
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";

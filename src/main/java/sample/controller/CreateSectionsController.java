@@ -57,12 +57,6 @@ public class CreateSectionsController implements Initializable {
         newSection.setEdition(28);
         System.out.println(newSection);
 
-
-
-
-
-
-
         //validari
 
         Stage stage = (Stage) nextButton.getScene().getWindow();
