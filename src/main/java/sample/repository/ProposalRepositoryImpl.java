@@ -65,6 +65,15 @@ public class ProposalRepositoryImpl implements BaseRepository<Proposal> {
         return result;
     }
 
+    public List<Proposal> findBidings (){
+        List<Proposal> result = em.createNamedQuery(Proposal.PROPOSAL_BID, Proposal.class)
+                .getResultList();
+        if(result.isEmpty()){
+            return new ArrayList<>();
+        }
+        return result;
+    }
+
     public Proposal getByUserOne(User userid){
         List<Proposal> result = em.createNamedQuery(Proposal.PROPOSAL, Proposal.class)
                 .setParameter(Proposal.USER, userid)

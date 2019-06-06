@@ -44,6 +44,7 @@ public class LoginController implements Initializable {
 
     @FXML
     private ChoiceBox<String> choiceBox;
+
     static User resultUser;
     @FXML
     void handleLoginButton(ActionEvent event) {

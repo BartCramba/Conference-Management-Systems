@@ -10,7 +10,7 @@ import java.util.Date;
 @Table(name="Edition")
 @NamedQuery(
         name="Edition.findById",
-        query="SELECT e FROM Edition e WHERE e.id = 28"
+        query="SELECT e FROM Edition e WHERE e.id = 58"
 )
 
 //@SQLInsert( sql="INSERT INTO Edition(editionId, author, editionName, conferenceId, beginDate, endDate, beginSubmissions, endSubmissions, endBidding, endReview, created) VALUES(?,?,?,?,?,?,?,?,?,?,?)")
