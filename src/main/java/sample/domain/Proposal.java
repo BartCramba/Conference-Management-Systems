@@ -2,6 +2,8 @@ package sample.domain;
 
 import javafx.scene.control.DatePicker;
 
+import com.mysql.cj.x.protobuf.MysqlxDatatypes;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -21,10 +23,13 @@ import java.util.List;
         name="Proposal.findByUsername",
         query="SELECT u FROM Proposal u WHERE u.user = :user")
 
+@NamedQuery(
+        name="Proposal.findBidings",
+        query="SELECT u FROM Proposal u")
 public class Proposal {
     public static final String PROPOSAL = "Proposal.findByUsername";
     public static final String USER = "user";
-
+    public static final String PROPOSAL_BID = "Proposal.findBidings";
     @Id
     @GeneratedValue
     private int proposalId;
@@ -50,29 +55,28 @@ public class Proposal {
     private List<Topic> topics = new ArrayList<Topic>();
 
     @ElementCollection(targetClass=String.class)
-    private List<String> keywords = new ArrayList<String>();
+    private List<String> keywords = new ArrayList<MysqlxDatatypes.Scalar.String>();
 
-    @OneToMany
-    @JoinColumn(name="proposalStatusId")
-    private List<ProposalStatus> statuses = new ArrayList<ProposalStatus>();
+//    @OneToMany
+//    @JoinColumn(name="proposalStatusId")
+    //private static List<ProposalStatus> statuses = new ArrayList<ProposalStatus>();
 
     @Temporal(TemporalType.DATE)
-    private Calendar modified;  // maybe we won't use it
+    private LocalDate modified;  // maybe we won't use it
     @Column(name="created")
     private LocalDate created;
 
     public Proposal() {
     }
 
-    public Proposal(User user, Edition edition, String name, String description, List<Topic> topics, List<String> keywords,
-                    List<ProposalStatus> statuses, Calendar modified, LocalDate created) {
+    public Proposal(User user, Edition edition, String name, String description, List<Topic> topics, List<String> keywords, Calendar modified, Calendar created) {
         this.user = user;
         this.edition = edition;
         this.name = name;
         this.description = description;
         this.topics = topics;
         this.keywords = keywords;
-        this.statuses = statuses;
+        //this.statuses = statuses;
         this.modified = modified;
         this.created = created;
     }
@@ -133,13 +137,13 @@ public class Proposal {
         this.keywords = keywords;
     }
 
-    public List<ProposalStatus> getStatuses() {
-        return statuses;
-    }
-
-    public void setStatuses(List<ProposalStatus> statuses) {
-        this.statuses = statuses;
-    }
+//    public List<ProposalStatus> getStatuses() {
+//        return statuses;
+//    }
+//
+//    public void setStatuses(List<ProposalStatus> statuses) {
+//        this.statuses = statuses;
+//    }
 
     public Calendar getModified() {
         return modified;
@@ -167,7 +171,7 @@ public class Proposal {
                 ", description='" + description + '\'' +
                 ", topics=" + topics +
                 ", keywords=" + keywords +
-                ", statuses=" + statuses +
+                //", statuses=" + statuses +
                 ", modified=" + modified +
                 ", created=" + created +
                 '}';

@@ -1,72 +1,108 @@
 package sample.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.input.MouseEvent;
-import sample.domain.Edition;
-import sample.domain.Proposal;
-import sample.domain.Topic;
-import sample.domain.User;
-import sample.repository.PaymentRepositoryImpl;
-import sample.repository.UserRepositoryImpl;
 
-import javax.jws.soap.SOAPBinding;
-import javax.management.relation.Role;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import sample.domain.*;
+import sample.repository.ProposalRepositoryImpl;
+import sample.repository.ProposalStatusRepositoryImpl;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class BidingController implements Initializable {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("sample");
     EntityManager em = emf.createEntityManager();
-    UserRepositoryImpl repo= new UserRepositoryImpl(em);
-
+    ProposalStatusRepositoryImpl repo1= new ProposalStatusRepositoryImpl(em);
+    ProposalRepositoryImpl repo= new ProposalRepositoryImpl(em);
     @FXML
-    public TableView<User> table;
+    private ChoiceBox<String> choiceBox;
     @FXML
     private Button yes;
     @FXML
     private Button no;
+    @FXML
+    private TextArea description;
 
-    public TableColumn<Proposal,String> proposalName;
-    public TextField textfieldName;
-
-    List<Topic> topicList = new ArrayList<>();
-    ObservableList<User> data;
-
-    public TableColumn<String,String> firstName;
-    public TableColumn<User,String> colName;
+    Proposal currentProposal;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        colName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        //proposalName.setCellValueFactory(new PropertyValueFactory<>("ProposalName"));
-//        table.setItems(observableList);
-//        table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-//        table.getSelectionModel().setCellSelectionEnabled(true);
-        data = FXCollections.observableArrayList();
-        User res= repo.getByUsername1("chair");
-        System.out.println(res.getFirstName());
-        data.add(repo.getByUsername1("chair"));
-        table.getItems().addAll(data);
+        Random rand = new Random();
+        List<Proposal> bidings = repo.findBidings();
+        int n = rand.nextInt(bidings.size());
+        this.currentProposal= bidings.get(n);
+        description.setText(currentProposal.toString());
+
+        choiceBox.getItems().addAll(
+                "strongAccept",
+                "accept",
+                "weekAccept",
+                "weekReject",
+                "borderlinePaper",
+                "reject",
+                "strongReject"
+        );
 
     }
-    public void clickedColumn(MouseEvent event) {
-//        TablePosition tablePosition=table.getSelectionModel().getSelectedCells().get(0);
-//        int row=tablePosition.getRow();
-//        Proposal item=table.getItems().get(row);
-//        TableColumn tableColumn=tablePosition.getTableColumn();
-//        //String data= (String) tableColumn.getCellObservableValue(item).getValue();
-//        System.out.println(tableColumn.getCellObservableValue(item));
+
+
+    public void handleYesButton(ActionEvent actionEvent) {
+        ProposalStatus proposalStatus = new ProposalStatus();
+        proposalStatus.setProposal(currentProposal);
+        proposalStatus.setStatus(ProposalStatus.proposalStatus.valueOf(choiceBox.getValue()));
+        repo1.save(proposalStatus);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText("SUCCESS.");
+        alert.show();
+
+        Stage stage = (Stage) yes.getScene().getWindow();
+        stage.close();
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/sessionChairWindow.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            stage = new Stage();
+
+            stage.setScene(new Scene(root1));
+            stage.show();
+
+            stage = (Stage) yes.getScene().getWindow();
+            stage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    public void handleNoButton(ActionEvent actionEvent) {
+        Stage stage = (Stage) no.getScene().getWindow();
+        stage.close();
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/sessionChairWindow.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            stage = new Stage();
+
+            stage.setScene(new Scene(root1));
+            stage.show();
+
+            stage = (Stage) no.getScene().getWindow();
+            stage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }
