@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.AuthorController">
    <children>
-      <AnchorPane layoutX="1.0" prefHeight="400.0" prefWidth="601.0" style="-fx-background-color: #20B2AA;">
+      <AnchorPane fx:id="anchorPane" layoutX="1.0" prefHeight="400.0" prefWidth="601.0" style="-fx-background-color: #20B2AA;">
          <children>
             <Label fx:id="welcome" layoutX="223.0" layoutY="14.0" prefHeight="32.0" prefWidth="117.0" text="Welcome!" textAlignment="CENTER" textFill="#fcfcfc">
                <font>
@@ -28,14 +28,14 @@
             </Label>
             <TextField fx:id="email" layoutX="37.0" layoutY="231.0" />
             <Button fx:id="getProposalsButton" layoutX="69.0" layoutY="265.0" mnemonicParsing="false" onAction="#handleGetProposalsButton" text="Get proposal" textFill="LIGHTSEAGREEN" />
-            <TextArea fx:id="proposals" layoutX="367.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
+            <TextArea fx:id="proposalsArea" layoutX="367.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
             <Label layoutX="411.0" layoutY="320.0" text="Status of proposal" textFill="#f8f1f1">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField alignment="TOP_CENTER" layoutX="399.0" layoutY="340.0" prefHeight="25.0" prefWidth="136.0" promptText="In progress" />
-            <Button layoutX="55.0" layoutY="100.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="113.0" text="Call for papers" />
+            <TextField fx:id="statusProposal" alignment="TOP_CENTER" layoutX="399.0" layoutY="340.0" prefHeight="25.0" prefWidth="136.0" promptText="In progress" />
+            <Button layoutX="55.0" layoutY="100.0" mnemonicParsing="false" onAction="#handleCallForPapers" prefHeight="36.0" prefWidth="113.0" text="Call for papers" />
          </children>
       </AnchorPane>
    </children>

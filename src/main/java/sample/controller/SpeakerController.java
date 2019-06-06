@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 import javafx.stage.Stage;
@@ -22,10 +23,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
+import java.util.*;
 import java.util.stream.*;
 
 public class SpeakerController implements Initializable {
@@ -51,6 +50,12 @@ public class SpeakerController implements Initializable {
     private TextField topics;
 
     @FXML
+    private TextField descr;
+
+    @FXML
+    private DatePicker created;
+
+    @FXML
     private TextField authors;
 
     public void handleSubmitProposalButton(ActionEvent actionEvent) {
@@ -59,11 +64,12 @@ public class SpeakerController implements Initializable {
 
         Proposal p = new Proposal();
 
+        p.setDescription(descr.getText());
+        p.setCreated(created.getValue());
         p.setName(proposalName.getText());
         String[] k = keywords.getText().split(",");
         p.setKeywords(Arrays.asList(k));
         String[] t = topics.getText().split(",");
-
 
         List<Topic> l = new ArrayList<Topic>();
         for(String s : t) {

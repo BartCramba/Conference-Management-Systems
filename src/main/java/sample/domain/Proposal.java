@@ -1,6 +1,9 @@
 package sample.domain;
 
+import javafx.scene.control.DatePicker;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -55,14 +58,14 @@ public class Proposal {
 
     @Temporal(TemporalType.DATE)
     private Calendar modified;  // maybe we won't use it
-    @Temporal(TemporalType.DATE)
-    private Calendar created;
+    @Column(name="created")
+    private LocalDate created;
 
     public Proposal() {
     }
 
     public Proposal(User user, Edition edition, String name, String description, List<Topic> topics, List<String> keywords,
-                    List<ProposalStatus> statuses, Calendar modified, Calendar created) {
+                    List<ProposalStatus> statuses, Calendar modified, LocalDate created) {
         this.user = user;
         this.edition = edition;
         this.name = name;
@@ -146,11 +149,11 @@ public class Proposal {
         this.modified = modified;
     }
 
-    public Calendar getCreated() {
+    public LocalDate getCreated() {
         return created;
     }
 
-    public void setCreated(Calendar created) {
+    public void setCreated(LocalDate created) {
         this.created = created;
     }
 
